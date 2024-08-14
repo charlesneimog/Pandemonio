@@ -1,122 +1,215 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Pd4Web</title>
-        <meta charset="UTF-8" />
-        <script src="./pd4web.threads.js"></script> <!-- Just necessary if you are using Github Pages -->
-        <script src="./pd4web.js"></script>
-        <style>
-            /* 
-            In order to ensure pd4web's independence from any CSS framework, I've opted to include FontAwesome icons in base64 format. This provides a visually appealing yet straightforward interface without relying on external resources. If you choose not to utilize icons or initiate pd4web through an alternative method, feel free to remove the style tag containing the icon references.
-        */
+  <head>
+    <title>Pd4Web</title>
+    <meta charset="UTF-8" />
+    <script src="./pd4web.threads.js"></script>
+    <!-- Just necessary if you are using Github Pages -->
+    <script src="./pd4web.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vexflow/build/cjs/vexflow.js"></script>
+  </head>
+  <style>
+    /* The switch - the box around the slider */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
 
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-            @keyframes pulse {
-                0% {
-                    transform: scale(1);
-                }
-                50% {
-                    transform: scale(1.2);
-                }
-                100% {
-                    transform: scale(1);
-                }
-            }
-            .pd4web-sound-off {
-                display: inline-block;
-                align-items: center;
-                animation: pulse 1s infinite;
-                height: 25px;
-                width: 25px;
-                content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTMwMS4xIDM0LjhDMzEyLjYgNDAgMzIwIDUxLjQgMzIwIDY0VjQ0OGMwIDEyLjYtNy40IDI0LTE4LjkgMjkuMnMtMjUgMy4xLTM0LjQtNS4zTDEzMS44IDM1Mkg2NGMtMzUuMyAwLTY0LTI4LjctNjQtNjRWMjI0YzAtMzUuMyAyOC43LTY0IDY0LTY0aDY3LjhMMjY2LjcgNDAuMWM5LjQtOC40IDIyLjktMTAuNCAzNC40LTUuM3pNNDI1IDE2N2w1NSA1NSA1NS01NWM5LjQtOS40IDI0LjYtOS40IDMzLjkgMHM5LjQgMjQuNiAwIDMzLjlsLTU1IDU1IDU1IDU1YzkuNCA5LjQgOS40IDI0LjYgMCAzMy45cy0yNC42IDkuNC0zMy45IDBsLTU1LTU1LTU1IDU1Yy05LjQgOS40LTI0LjYgOS40LTMzLjkgMHMtOS40LTI0LjYgMC0zMy45bDU1LTU1LTU1LTU1Yy05LjQtOS40LTkuNC0yNC42IDAtMzMuOXMyNC42LTkuNCAzMy45IDB6Ii8+PC9zdmc+");
-            }
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
 
-            .pd4web-sound-loading {
-                display: inline-block;
-                animation: spin 2s linear infinite;
-                align-items: center;
-                height: 25px;
-                width: 25px;
-                content: url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTMwNCA0OGE0OCA0OCAwIDEgMCAtOTYgMCA0OCA0OCAwIDEgMCA5NiAwem0wIDQxNmE0OCA0OCAwIDEgMCAtOTYgMCA0OCA0OCAwIDEgMCA5NiAwek00OCAzMDRhNDggNDggMCAxIDAgMC05NiA0OCA0OCAwIDEgMCAwIDk2em00NjQtNDhhNDggNDggMCAxIDAgLTk2IDAgNDggNDggMCAxIDAgOTYgMHpNMTQyLjkgNDM3QTQ4IDQ4IDAgMSAwIDc1IDM2OS4xIDQ4IDQ4IDAgMSAwIDE0Mi45IDQzN3ptMC0yOTQuMkE0OCA0OCAwIDEgMCA3NSA3NWE0OCA0OCAwIDEgMCA2Ny45IDY3Ljl6TTM2OS4xIDQzN0E0OCA0OCAwIDEgMCA0MzcgMzY5LjEgNDggNDggMCAxIDAgMzY5LjEgNDM3eiIvPjwvc3ZnPg==");
-            }
-            .pd4web-sound-on {
-                display: inline-block;
-                animation: none;
-                align-items: center;
-                height: 25px;
-                width: 25px;
-                content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTUzMy42IDMyLjVDNTk4LjUgODUuMiA2NDAgMTY1LjggNjQwIDI1NnMtNDEuNSAxNzAuNy0xMDYuNCAyMjMuNWMtMTAuMyA4LjQtMjUuNCA2LjgtMzMuOC0zLjVzLTYuOC0yNS40IDMuNS0zMy44QzU1Ny41IDM5OC4yIDU5MiAzMzEuMiA1OTIgMjU2cy0zNC41LTE0Mi4yLTg4LjctMTg2LjNjLTEwLjMtOC40LTExLjgtMjMuNS0zLjUtMzMuOHMyMy41LTExLjggMzMuOC0zLjV6TTQ3My4xIDEwN2M0My4yIDM1LjIgNzAuOSA4OC45IDcwLjkgMTQ5cy0yNy43IDExMy44LTcwLjkgMTQ5Yy0xMC4zIDguNC0yNS40IDYuOC0zMy44LTMuNXMtNi44LTI1LjQgMy41LTMzLjhDNDc1LjMgMzQxLjMgNDk2IDMwMS4xIDQ5NiAyNTZzLTIwLjctODUuMy01My4yLTExMS44Yy0xMC4zLTguNC0xMS44LTIzLjUtMy41LTMzLjhzMjMuNS0xMS44IDMzLjgtMy41em0tNjAuNSA3NC41QzQzNC4xIDE5OS4xIDQ0OCAyMjUuOSA0NDggMjU2cy0xMy45IDU2LjktMzUuNCA3NC41Yy0xMC4zIDguNC0yNS40IDYuOC0zMy44LTMuNXMtNi44LTI1LjQgMy41LTMzLjhDMzkzLjEgMjg0LjQgNDAwIDI3MSA0MDAgMjU2cy02LjktMjguNC0xNy43LTM3LjNjLTEwLjMtOC40LTExLjgtMjMuNS0zLjUtMzMuOHMyMy41LTExLjggMzMuOC0zLjV6TTMwMS4xIDM0LjhDMzEyLjYgNDAgMzIwIDUxLjQgMzIwIDY0VjQ0OGMwIDEyLjYtNy40IDI0LTE4LjkgMjkuMnMtMjUgMy4xLTM0LjQtNS4zTDEzMS44IDM1Mkg2NGMtMzUuMyAwLTY0LTI4LjctNjQtNjRWMjI0YzAtMzUuMyAyOC43LTY0IDY0LTY0aDY3LjhMMjY2LjcgNDAuMWM5LjQtOC40IDIyLjktMTAuNCAzNC40LTUuM3oiLz48L3N2Zz4=");
-            }
-        </style>
-    </head>
-    <body>
-        <span
-            style="display: block; margin: 0 auto; text-align: center"
-            class="pd4web-sound-off"
-            id="Pd4WebAudioSwitch"
-        ></span>
-        <div
-            id="Pd4WebPatchDiv"
-            style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-left: 5%;
-                margin-right: 5%;
-                border-radius: 10px;
-                box-shadow:
-                    rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-                    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-                height: 70%;
-            "
-        >
-            <svg id="Pd4WebCanvas" height="100%" width="100%" preserveAspectRatio="xMidYMin meet"></svg>
-        </div>
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196f3;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196f3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    canvas {
+      background: rgb(48, 48, 48);
+      padding: 10px;
+    }
+
+    div.egcode {
+      font-family: Courier;
+      font-size: 14px;
+    }
+  </style>
+
+  <body style="height: 100%; background-color: rgb(48, 48, 48)">
+    <div
+      id="control-gui"
+      style="
+        background-color: rgb(48, 48, 48);
+        width: 100%;
+        height: 20%;
+        text-align: center;
+        border-radius: 10px;
+      "
+    >
+      <h1 style="color: white">Pandemônio</h1>
+      <label class="switch">
+        <input type="checkbox" id="myCheckbox" />
+        <span class="slider round"></span>
+      </label>
+      <hr
+        style="
+          width: 90%;
+          margin-top: 20px;
+          background-color: rgb(226, 225, 225);
+        "
+      />
+      <div id="VexFlowNote" style="width: 90%; margin-left: 7%"></div>
         <script>
-            // ╭─────────────────────────────────────╮
-            // │      Load Pd4Web audio engine       │
-            // ╰─────────────────────────────────────╯
+          const {
+            Formatter,
+            ModifierPosition,
+            Annotation,
+            Renderer,
+            Barline,
+            Stave,
+            TextNote,
+            Voice,
+          } = Vex.Flow;
 
-            // Don't remove this
-            let Pd4Web = null;
+          // Create an SVG renderer and attach it to the DIV element
+          const div = document.getElementById("VexFlowNote");
+          const renderer = new Renderer(div, Renderer.Backends.SVG);
+          renderer.resize(500, 250);
+          const context = renderer.getContext();
+          context.save();
+          context.scale(2, 2);
 
-            Pd4WebModule().then((Pd4WebModulePromise) => {
-                Pd4Web = new Pd4WebModulePromise.Pd4Web();
-            });
+          // Create a stave at position 10, 40 of width 400 on the canvas.
+          var DEFAULT_COLOR = "white";
+          context.setFillStyle(DEFAULT_COLOR);
+          context.setStrokeStyle(DEFAULT_COLOR);
+          const stave = new Stave(0, 0, 250, { fill_style: DEFAULT_COLOR });
+          stave.setEndBarType(Barline.type.END);
 
-            // ╭─────────────────────────────────────╮
-            // │        Gui Bottoms Interface        │
-            // ╰─────────────────────────────────────╯
-            document.getElementById("Pd4WebAudioSwitch").addEventListener("click", async () => {
-                // pd4web incorporates web audio functionality through the use of AudioWorklets.
-                // To initialize AudioWorklets, pd4web must be initiated from a click event.
-                // In this instance, an icon is utilized with <span class="pd4web-sound-off" id="Pd4WebAudioSwitch"></span>,
-                // though you have the flexibility to add a click event anywhere within the Web Window.
+          stave.addClef("treble");
 
-                // To add one click for any where in the window use window.addEventListener('click', function(event)...
-                var clickableSpan = document.getElementById("Pd4WebAudioSwitch");
-                if (clickableSpan.classList.contains("pd4web-sound-on")) {
-                    clickableSpan.classList.remove("pd4web-sound-on");
-                    Pd4Web.suspendAudio();
-                    clickableSpan.classList.add("pd4web-sound-off");
-                    return;
-                }
+          var newNote = new Vex.Flow.StaveNote({
+            keys: ["g/4"],
+            duration: "w",
+            align_center: true,
+          });
 
-                clickableSpan.classList.remove("pd4web-sound-off");
-                clickableSpan.classList.add("pd4web-sound-loading");
+          var silaba = "Test";
+          const lyricsAnnotation = new Annotation(silaba);
+          lyricsAnnotation.setFont("Serif", 12, "");
 
-                Pd4Web.init(); // <== This is the unique important thing here, running this from any click event will make the PureData turn on.
 
-                clickableSpan.classList.remove("pd4web-sound-loading");
-                clickableSpan.classList.add("pd4web-sound-on");
-            });
+          lyricsAnnotation.setVerticalJustification(
+            Annotation.VerticalJustify.BOTTOM
+          );
+          lyricsAnnotation.setJustification(Annotation.HorizontalJustify.CENTER);
+
+          newNote.addModifier(lyricsAnnotation, 0);
+
+          var voice = new Voice();
+          voice.addTickables([newNote]);
+          var formatter = new Formatter()
+            .joinVoices([voice])
+            .format([voice], 150);
+
+          voice.draw(context, stave);
+          stave.setContext(context).draw();
+          context.restore();
         </script>
-    </body>
+      </div>
+      <hr
+        style="
+          width: 90%;
+          margin-top: 20px;
+          background-color: rgb(226, 225, 225);
+        "
+      />
+    </div>
+    <script>
+      // ╭─────────────────────────────────────╮
+      // │      Load Pd4Web audio engine       │
+      // ╰─────────────────────────────────────╯
+
+      // Don't remove this
+      let Pd4Web = null;
+
+      Pd4WebModule().then((Pd4WebModulePromise) => {
+        Pd4Web = new Pd4WebModulePromise.Pd4Web();
+      });
+
+      // ╭─────────────────────────────────────╮
+      // │        Gui Bottoms Interface        │
+      // ╰─────────────────────────────────────╯
+      async function initPd4WebOnClick(event) {
+        if (Pd4Web === null) {
+          alert(
+            "Pd4Web is not loaded yet. Please wait a few seconds and try again."
+          );
+          return;
+        }
+        Pd4Web.init();
+        document.removeEventListener("click", initPd4WebOnClick);
+      }
+
+      const checkbox = document.getElementById("myCheckbox");
+
+      // Add an event listener to the checkbox
+      checkbox.addEventListener("click", function () {
+        if (checkbox.checked) {
+          Pd4Web.sendFloat("on-off", 1);
+        } else {
+          Pd4Web.sendFloat("on-off", 0);
+        }
+      });
+
+      document.addEventListener("click", initPd4WebOnClick);
+    </script>
+  </body>
 </html>

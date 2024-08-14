@@ -86,7 +86,7 @@ var ENVIRONMENT_IS_WASM_WORKER = Module['$ww'];
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmplkzea3gd.js
+// include: /tmp/tmp5i1klahs.js
 
   if (!Module.expectedDataFileDownloads) {
     Module.expectedDataFileDownloads = 0;
@@ -195,6 +195,7 @@ var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
       function assert(check, msg) {
         if (!check) throw msg + new Error().stack;
       }
+Module['FS_createPath']("/", "Libs", true, true);
 
       /** @constructor */
       function DataRequest(start, end, audio) {
@@ -262,25 +263,25 @@ var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
     }
 
     }
-    loadPackage({"files": [{"filename": "/index.pd", "start": 0, "end": 358}], "remote_package_size": 358});
+    loadPackage({"files": [{"filename": "/Libs/Engine.pd", "start": 0, "end": 2941}, {"filename": "/Libs/count.pd", "start": 2941, "end": 11400}, {"filename": "/Libs/insert.pd", "start": 11400, "end": 12850}, {"filename": "/Libs/rotate.pd", "start": 12850, "end": 14131}, {"filename": "/index.pd", "start": 14131, "end": 14444}], "remote_package_size": 14444});
 
   })();
 
-// end include: /tmp/tmplkzea3gd.js
-// include: /tmp/tmpgx9n_hsx.js
+// end include: /tmp/tmp5i1klahs.js
+// include: /tmp/tmp5zz3l0ck.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if (Module['$ww'] || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: /tmp/tmpgx9n_hsx.js
-// include: /tmp/tmpa8smz_dg.js
+  // end include: /tmp/tmp5zz3l0ck.js
+// include: /tmp/tmp2hlufias.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: /tmp/tmpa8smz_dg.js
+  // end include: /tmp/tmp2hlufias.js
 
 
 // Sometimes an existing Module object exists with properties
@@ -10271,10 +10272,6 @@ function assignWasmImports() {
     _JS_alert,
     /** @export */
     _JS_getMicAccess,
-    /** @export */
-    _JS_loadGui,
-    /** @export */
-    _JS_loadStyle,
     /** @export */
     _JS_post,
     /** @export */
