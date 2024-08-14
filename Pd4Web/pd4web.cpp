@@ -466,10 +466,10 @@ EM_BOOL Pd4Web::process(int numInputs, const AudioSampleFrame *In, int numOutput
 
     int ChCount = Out[0].numberOfChannels;
     float LibPdOuts[128 * ChCount];
-    std::string in =
-        "Ch In: " + std::to_string(numInputs) + " | Ch Out: " + std::to_string(ChCount);
-
-    _JS_post(in.c_str());
+    // std::string in =
+    //     "Ch In: " + std::to_string(numInputs) + " | Ch Out: " + std::to_string(ChCount);
+    //
+    // _JS_post(in.c_str());
 
     libpd_process_float(2, In[0].data, LibPdOuts);
     // TODO: Fix multiple channels
@@ -653,12 +653,11 @@ void Pd4Web::mainLoop() {
 // │            Main Function            │
 // ╰─────────────────────────────────────╯
 int main() {
-    _JS_loadStyle();
-    _JS_setTitle(PD4WEB_PROJECT_NAME);
-
     if (PD4WEB_GUI) {
+        _JS_loadStyle();
         _JS_loadGui(PD4WEB_AUTO_THEME);
     }
+    _JS_setTitle(PD4WEB_PROJECT_NAME);
 
     printf("pd4web version %d.%d.%d\n", PD4WEB_MAJOR_VERSION, PD4WEB_MINOR_VERSION,
            PD4WEB_MICRO_VERSION);

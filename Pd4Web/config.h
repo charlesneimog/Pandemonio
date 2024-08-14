@@ -8,7 +8,7 @@
 #define PD4WEB_CHS_OUT 2
 
 // GUI Interface
-#define PD4WEB_GUI true
+#define PD4WEB_GUI false
 #define PD4WEB_FPS 60
 #define PD4WEB_AUTO_THEME true
 
