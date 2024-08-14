@@ -72,8 +72,8 @@
       border-radius: 50%;
     }
     canvas {
-      background: rgb(48, 48, 48);
-      padding: 10px;
+      background: rgb(206, 203, 203);
+      padding: 0px;
     }
 
     div.egcode {
@@ -105,95 +105,86 @@
           background-color: rgb(226, 225, 225);
         "
       />
-      <div id="VexFlowNote" style="width: auto; height: auto; margin-left: 7%"></div>
-        <script>
-          const {
-            Formatter,
-            ModifierPosition,
-            Annotation,
-            Renderer,
-            Barline,
-            Stave,
-            TextNote,
-            Voice,
-          } = Vex.Flow;
+      <div
+        id="VexFlowNote"
+        style="height: 50%; margin-left: 0%; margin-top: 0%"
+      ></div>
+      <script>
+        // Create the VexFlow renderer
+        var VF = Vex.Flow;
+        Vex.Flow.setMusicFont("Bravura");
 
-          // get document size in pixels
-          const width = document.documentElement.clientWidth;
-          const height = document.documentElement.clientHeight;
-          
-          const scale = width / 250;
-          console.log(width, height, scale);
+        var div = document.getElementById("VexFlowNote");
+        var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
-          // Create an SVG renderer and attach it to the DIV element
-          const div = document.getElementById("VexFlowNote");
-          const renderer = new Renderer(div, Renderer.Backends.SVG);
-          renderer.resize(width, height* 0.2);
-          const context = renderer.getContext();
-          context.save();
-          context.scale(scale, scale);
+        const scoreWidth = 160;
+        const scoreHeight = 150;
+        var scaleFactor = 5;
+        renderer.resize(scoreWidth * scaleFactor, scoreHeight * scaleFactor);
 
-          var DEFAULT_COLOR = "white";
-          context.setFillStyle(DEFAULT_COLOR);
-          context.setStrokeStyle(DEFAULT_COLOR);
-          const stave = new Stave(0, 0, 200, { fill_style: DEFAULT_COLOR });
-          stave.setEndBarType(Barline.type.END);
+        // Get the rendering context
+        const context = renderer.getContext();
+        var DEFAULT_COLOR = "white";
+        context.setFillStyle(DEFAULT_COLOR);
+        context.setStrokeStyle(DEFAULT_COLOR);
+        context.scale(scaleFactor, scaleFactor);
+        var group = renderer.getContext().openGroup();
 
-          stave.addClef("treble");
+        var note = null;
 
-          var newNote = new Vex.Flow.StaveNote({
-            keys: ["g/4"],
+        // Create a stave and add notes as usual add id to stave
+        var stave = new VF.Stave(0, 0, scoreWidth);
+        stave.setEndBarType(VF.Barline.type.END);
+        stave.addClef("treble").setContext(context).draw();
+
+        function setNoteAndSilaba(pitch, silaba) {
+            const notes = document.querySelectorAll(".vf-stavenote");
+            notes.forEach((note) => {
+              note.remove();
+            });
+          stave.setContext(context).draw();
+          note = new VF.StaveNote({
+            clef: "treble",
+            keys: [pitch],
             duration: "w",
             align_center: true,
           });
+          note.setAttribute("id", "mynote");
 
-          var silaba = "Test";
-          const lyricsAnnotation = new Annotation(silaba);
+          var silaba = silaba;
+          const lyricsAnnotation = new VF.Annotation(silaba);
           lyricsAnnotation.setFont("Serif", 12, "");
 
-
           lyricsAnnotation.setVerticalJustification(
-            Annotation.VerticalJustify.BOTTOM
+            VF.Annotation.VerticalJustify.BOTTOM
           );
-          lyricsAnnotation.setJustification(Annotation.HorizontalJustify.CENTER);
+          lyricsAnnotation.setJustification(
+            VF.Annotation.HorizontalJustify.CENTER
+          );
 
-          newNote.addModifier(lyricsAnnotation, 0);
+          note.addModifier(lyricsAnnotation, 0);
 
-          var voice = new Voice();
-          voice.addTickables([newNote]);
-          var formatter = new Formatter()
+          voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
+          voice.addTickables([note]);
+
+          var formatter = new VF.Formatter()
             .joinVoices([voice])
-            .format([voice], 125);
+            .format([voice], scoreWidth - scoreWidth * 0.5);
 
           voice.draw(context, stave);
-          stave.setContext(context).draw();
-          context.restore();
-
-        </script>
-      </div>
-      <hr
-        style="
-          width: 90%;
-          margin-top: 20px;
-          background-color: rgb(226, 225, 225);
-        "
-      />
+        }
+      </script>
     </div>
+    <hr
+      style="width: 90%; margin-top: 20px; background-color: rgb(226, 225, 225)"
+    />
+
     <script>
-      // ╭─────────────────────────────────────╮
-      // │      Load Pd4Web audio engine       │
-      // ╰─────────────────────────────────────╯
-
-      // Don't remove this
       let Pd4Web = null;
-
       Pd4WebModule().then((Pd4WebModulePromise) => {
         Pd4Web = new Pd4WebModulePromise.Pd4Web();
       });
 
-      // ╭─────────────────────────────────────╮
-      // │        Gui Bottoms Interface        │
-      // ╰─────────────────────────────────────╯
       async function initPd4WebOnClick(event) {
         if (Pd4Web === null) {
           alert(
@@ -201,16 +192,21 @@
           );
           return;
         }
-        Pd4Web.init();
-        // request full screen
-        document.documentElement.requestFullscreen();
-        
+        Pd4Web.init();       
         document.removeEventListener("click", initPd4WebOnClick);
+
+        Pd4Web.onListReceived("mylist", function (list) {
+          const pitch = list[1];
+          const silaba = list[0];
+          console.log(pitch, silaba);
+          setNoteAndSilaba(pitch, silaba);
+          
+        });
       }
+      document.addEventListener("click", initPd4WebOnClick);
 
+      // on/off switch
       const checkbox = document.getElementById("myCheckbox");
-
-      // Add an event listener to the checkbox
       checkbox.addEventListener("click", function () {
         if (checkbox.checked) {
           Pd4Web.sendFloat("on-off", 1);
@@ -219,7 +215,7 @@
         }
       });
 
-      document.addEventListener("click", initPd4WebOnClick);
+      
     </script>
   </body>
 </html>

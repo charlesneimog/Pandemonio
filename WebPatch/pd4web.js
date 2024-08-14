@@ -28,7 +28,7 @@ var readyPromise = new Promise((resolve, reject) => {
   readyPromiseResolve = resolve;
   readyPromiseReject = reject;
 });
-["___indirect_function_table","__JS_sendList","__JS_loadGui","__JS_loadStyle","__JS_setTitle","__JS_alert","__JS_post","__JS_getMicAccess","__JS_suspendAudioWorkLet","__JS_loadMidi","__JS_receiveBang","__JS_receiveFloat","__JS_receiveSymbol","_main","onRuntimeInitialized"].forEach((prop) => {
+["___indirect_function_table","__JS_sendList","__JS_onReceived","__JS_loadGui","__JS_loadStyle","__JS_setTitle","__JS_alert","__JS_post","__JS_getMicAccess","__JS_suspendAudioWorkLet","__JS_loadMidi","__JS_receiveBang","__JS_receiveFloat","__JS_receiveSymbol","__JS_receiveList","_main","onRuntimeInitialized"].forEach((prop) => {
   if (!Object.getOwnPropertyDescriptor(readyPromise, prop)) {
     Object.defineProperty(readyPromise, prop, {
       get: () => abort('You are getting ' + prop + ' on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js'),
@@ -86,7 +86,7 @@ var ENVIRONMENT_IS_WASM_WORKER = Module['$ww'];
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmp5i1klahs.js
+// include: /tmp/tmpf63ob8wh.js
 
   if (!Module.expectedDataFileDownloads) {
     Module.expectedDataFileDownloads = 0;
@@ -195,6 +195,7 @@ var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
       function assert(check, msg) {
         if (!check) throw msg + new Error().stack;
       }
+Module['FS_createPath']("/", "Extras", true, true);
 Module['FS_createPath']("/", "Libs", true, true);
 
       /** @constructor */
@@ -263,25 +264,25 @@ Module['FS_createPath']("/", "Libs", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/Libs/Engine.pd", "start": 0, "end": 2941}, {"filename": "/Libs/count.pd", "start": 2941, "end": 11400}, {"filename": "/Libs/insert.pd", "start": 11400, "end": 12850}, {"filename": "/Libs/rotate.pd", "start": 12850, "end": 14131}, {"filename": "/index.pd", "start": 14131, "end": 14444}], "remote_package_size": 14444});
+    loadPackage({"files": [{"filename": "/Extras/d3-al.webp", "start": 0, "end": 7360}, {"filename": "/Libs/Engine.pd", "start": 7360, "end": 11326}, {"filename": "/Libs/count.pd", "start": 11326, "end": 19785}, {"filename": "/Libs/insert.pd", "start": 19785, "end": 21235}, {"filename": "/Libs/rotate.pd", "start": 21235, "end": 22516}, {"filename": "/index.pd", "start": 22516, "end": 22829}], "remote_package_size": 22829});
 
   })();
 
-// end include: /tmp/tmp5i1klahs.js
-// include: /tmp/tmp5zz3l0ck.js
+// end include: /tmp/tmpf63ob8wh.js
+// include: /tmp/tmpenugalpk.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if (Module['$ww'] || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: /tmp/tmp5zz3l0ck.js
-// include: /tmp/tmp2hlufias.js
+  // end include: /tmp/tmpenugalpk.js
+// include: /tmp/tmput80w4u7.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: /tmp/tmp2hlufias.js
+  // end include: /tmp/tmput80w4u7.js
 
 
 // Sometimes an existing Module object exists with properties
@@ -1409,7 +1410,8 @@ function dbg(...args) {
 // end include: runtime_debug.js
 // === Body ===
 
-function _JS_sendList() { if (typeof Pd4Web.GuiReceivers === "undefined") { Pd4Web.GuiReceivers = {}; } Pd4Web.sendList = function (r, vec) { const vecLength = vec.length; var ok = Pd4Web._startMessage(vecLength); if (!ok) { console.error('Failed to start message'); return; } for (let i = 0; i < vecLength; i++) { if (typeof vec[i] === 'string') { Pd4Web._addSymbol(vec[i]); } else if (typeof vec[i] === 'number') { Pd4Web._addFloat(vec[i]); } else{ console.error('Invalid type'); } } Pd4Web._finishMessage(r); }; Pd4Web.onFloatReceived = function(receiver, myFunc) { if (typeof Pd4Web._userFloatFunc === 'undefined') { Pd4Web._userFloatFunc = {}; } const paramCount = myFunc.length; if (paramCount !== 1) { console.error('Invalid number of arguments for function, expected 1, just the float received'); return; } Pd4Web.bindReceiver(receiver); Pd4Web._userFloatFunc[receiver] = myFunc; }; Pd4Web.onSymbolReceived = function(receiver, myFunc) { if (typeof Pd4Web._userSymbolFunc === 'undefined') { Pd4Web._userSymbolFunc = {}; } const paramCount = myFunc.length; if (paramCount !== 1) { console.error('Invalid number of arguments for function. Required 1, just the symbol (aka string) received'); return; } Pd4Web.bindReceiver(receiver); Pd4Web._userSymbolFunc[receiver] = myFunc; }; }
+function _JS_sendList() { if (typeof Pd4Web.GuiReceivers === "undefined") { Pd4Web.GuiReceivers = {}; } Pd4Web.sendList = function (r, vec) { const vecLength = vec.length; var ok = Pd4Web._startMessage(vecLength); if (!ok) { console.error('Failed to start message'); return; } for (let i = 0; i < vecLength; i++) { if (typeof vec[i] === 'string') { Pd4Web._addSymbol(vec[i]); } else if (typeof vec[i] === 'number') { Pd4Web._addFloat(vec[i]); } else{ console.error('Invalid type'); } } Pd4Web._finishMessage(r); }; }
+function _JS_onReceived() { Pd4Web.onBangReceived = function(receiver, myFunc) { if (typeof Pd4Web._userBangFunc === 'undefined') { Pd4Web._userBangFunc = {}; } const paramCount = myFunc.length; if (paramCount !== 0) { console.error('Invalid number of arguments for function, expected 0 arguments'); return; } Pd4Web.bindReceiver(receiver); Pd4Web._userBangFunc[receiver] = myFunc; }; Pd4Web.onFloatReceived = function(receiver, myFunc) { if (typeof Pd4Web._userFloatFunc === 'undefined') { Pd4Web._userFloatFunc = {}; } const paramCount = myFunc.length; if (paramCount !== 1) { console.error('Invalid number of arguments for function, expected 1, just the float received'); return; } Pd4Web.bindReceiver(receiver); Pd4Web._userFloatFunc[receiver] = myFunc; }; Pd4Web.onSymbolReceived = function(receiver, myFunc) { if (typeof Pd4Web._userSymbolFunc === 'undefined') { Pd4Web._userSymbolFunc = {}; } const paramCount = myFunc.length; if (paramCount !== 1) { console.error('Invalid number of arguments for function. Required 1, just the symbol (aka string) received'); return; } Pd4Web.bindReceiver(receiver); Pd4Web._userSymbolFunc[receiver] = myFunc; }; Pd4Web.onListReceived = function(receiver, myFunc) { if (typeof Pd4Web._userListFunc === 'undefined') { Pd4Web._userListFunc = {}; } const paramCount = myFunc.length; if (paramCount !== 1) { console.error('Invalid number of arguments for function. Required 1, just the list received'); return; } Pd4Web.bindReceiver(receiver); Pd4Web._userListFunc[receiver] = myFunc; }; }
 function _JS_loadGui(AutoTheming) { if (document.getElementById("pd4web-gui") != null){ return; } var script = document.createElement('script'); script.type = "text/javascript"; script.src = "./pd4web.gui.js"; script.id = "pd4web-gui"; script.onload = function() { Pd4WebInitGui(AutoTheming); }; document.head.appendChild(script); }
 function _JS_loadStyle() { if (document.getElementById("pd4web-style") != null){ console.log("GUI already loaded"); return; } var link = document.createElement('link'); link.rel = "stylesheet"; link.type = "text/css"; link.href = "./pd4web.style.css"; link.id = "pd4web-style"; document.head.appendChild(link); }
 function _JS_setTitle(projectName) { let title = UTF8ToString(projectName); document.title = title; }
@@ -1418,9 +1420,10 @@ function _JS_post(msg) { console.log(UTF8ToString(msg)); }
 function _JS_getMicAccess(audioContext,audioWorkletNode,nInCh) { Pd4WebAudioContext = emscriptenGetAudioObject(audioContext); Pd4WebAudioWorkletNode = emscriptenGetAudioObject(audioWorkletNode); async function _GetMicAccess(stream) { try { const SourceNode = Pd4WebAudioContext.createMediaStreamSource(stream); SourceNode.connect(Pd4WebAudioWorkletNode); Pd4WebAudioWorkletNode.connect(Pd4WebAudioContext.destination); } catch (err) { alert(err); } } if (nInCh > 0) { navigator.mediaDevices .getUserMedia({ video: false, audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false, }, }) .then((stream) => _GetMicAccess(stream)); } else { Pd4WebAudioWorkletNode.connect(Pd4WebAudioContext.destination); } }
 function _JS_suspendAudioWorkLet(audioContext) { Pd4WebAudioContext = emscriptenGetAudioObject(audioContext); Pd4WebAudioContext.suspend(); }
 function _JS_loadMidi() { if (document.getElementById("pd4web-midi") != null){ return; } var script = document.createElement('script'); script.type = "text/javascript"; script.src = "./pd4web.midi.js"; script.id = "pd4web-midi"; script.onload = function() { if (typeof WebMidi != "object") { console.error("Midi: failed to find the 'WebMidi' object"); return; } WebMidi.enable(function (err) { if (err) { console.error("Midi: failed to enable midi", err); return; } WebMidi.inputs.forEach(input => { console.log(input.channels); input.channels[1].addListener("noteon", function(e) { if (typeof e.channel === 'undefined') { Pd4Web.noteOn(1, e.note.number, e.rawVelocity); } else{ Pd4Web.noteOn(e.channel, e.note.number, e.rawVelocity); } }); input.channels[1].addListener("noteoff", function(e) { if (typeof e.channel === 'undefined') { Pd4Web.noteOn(1, e.note.number, 0); } else{ Pd4Web.noteOn(e.channel, e.note.number, 0); } }); }); }, false); }; document.head.appendChild(script); }
-function _JS_receiveBang(r) { var source = UTF8ToString(r); if (source in Pd4Web.GuiReceivers) { for (const data of Pd4Web.GuiReceivers[source]) { switch (data.type) { case "bng": GuiBngUpdateCircle(data); break; case "tgl": data.value = data.value ? 0 : data.default_value; GuiTglUpdateCross(data); break; case "vsl": case "hsl": GuiSliderBang(data); break; case "vradio": case "hradio": Pd4Web.sendFloat(data.send, data.value); break; } } } else{ } }
+function _JS_receiveBang(r) { var source = UTF8ToString(r); if (source in Pd4Web.GuiReceivers) { for (const data of Pd4Web.GuiReceivers[source]) { switch (data.type) { case "bng": GuiBngUpdateCircle(data); break; case "tgl": data.value = data.value ? 0 : data.default_value; GuiTglUpdateCross(data); break; case "vsl": case "hsl": GuiSliderBang(data); break; case "vradio": case "hradio": Pd4Web.sendFloat(data.send, data.value); break; } } } else{ let bangFunc = Pd4Web._userBangFunc[source]; if (typeof bangFunc === 'function') { bangFunc(); } } }
 function _JS_receiveFloat(r,f) { var source = UTF8ToString(r); if (source in Pd4Web.GuiReceivers) { for (const data of Pd4Web.GuiReceivers[source]) { switch (data.type) { case "bng": GuiBngUpdateCircle(data); break; case "tgl": data.value = data.value ? 0 : data.default_value; GuiTglUpdateCross(data); break; case "vsl": case "hsl": GuiSliderSet(data, f); GuiSliderBang(data); break; case "vradio": case "hradio": data.value = Math.min(Math.max(Math.floor(f), 0), data.number - 1); GuiRadioUpdateButton(data); Pd4Web.sendFloat(data.send, data.value); break; case "vu": data.value = f; GuiVuUpdateGain(data); break; } } } else{ let floatFunc = Pd4Web._userFloatFunc[source]; if (typeof floatFunc === 'function') { floatFunc(f); } } }
 function _JS_receiveSymbol(r,s) { var source = UTF8ToString(r); var symbol = UTF8ToString(s); if (source in Pd4Web.GuiReceivers) { for (const data of Pd4Web.GuiReceivers[source]) { switch (data.type) { case "bng": GuiBngUpdateCircle(data); break; } } } else{ let symbolFunc = Pd4Web._userSymbolFunc[source]; if (typeof symbolFunc === 'function') { symbolFunc(symbol); } } }
+function _JS_receiveList(r) { var source = UTF8ToString(r); if (source in Pd4Web.GuiReceivers) { return; } else{ let listFunc = Pd4Web._userListFunc[source]; const listSize = Pd4Web._getReceivedListSize(source); var pdList = []; for (let i = 0; i < listSize; i++) { let type = Pd4Web._getItemFromListType(source, i); if (type === "float") { pdList.push(Pd4Web._getItemFromListFloat(source, i)); } else if (type === "symbol") { pdList.push(Pd4Web._getItemFromListSymbol(source, i)); } else{ console.error("Invalid type"); } } if (typeof listFunc === 'function') { listFunc(pdList); } } }
 
 // end include: preamble.js
 
@@ -10273,11 +10276,15 @@ function assignWasmImports() {
     /** @export */
     _JS_getMicAccess,
     /** @export */
+    _JS_onReceived,
+    /** @export */
     _JS_post,
     /** @export */
     _JS_receiveBang,
     /** @export */
     _JS_receiveFloat,
+    /** @export */
+    _JS_receiveList,
     /** @export */
     _JS_receiveSymbol,
     /** @export */
@@ -10444,6 +10451,7 @@ function assignWasmImports() {
 }
 var wasmExports = createWasm();
 var ___wasm_call_ctors = createExportWrapper('__wasm_call_ctors', 0);
+var _malloc = createExportWrapper('malloc', 1);
 var _main = Module['_main'] = createExportWrapper('main', 2);
 var ___getTypeName = createExportWrapper('__getTypeName', 1);
 var __embind_initialize_bindings = createExportWrapper('_embind_initialize_bindings', 0);
@@ -10453,7 +10461,6 @@ var _free = createExportWrapper('free', 1);
 var _fflush = createExportWrapper('fflush', 1);
 var _ntohs = createExportWrapper('ntohs', 1);
 var _htons = createExportWrapper('htons', 1);
-var _malloc = createExportWrapper('malloc', 1);
 var __emscripten_tls_init = createExportWrapper('_emscripten_tls_init', 0);
 var __emscripten_thread_init = createExportWrapper('_emscripten_thread_init', 6);
 var ___set_thread_state = createExportWrapper('__set_thread_state', 4);
