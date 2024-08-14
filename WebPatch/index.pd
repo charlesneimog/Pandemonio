@@ -1,0 +1,8 @@
+#N canvas 770 61 200 200 10;
+#X obj 5 5 tgl 91 0 t1-s t1-r empty 17 7 0 10 #e4e4e4 #000000 #373737 0 1;
+#X obj 158 7 vu 20 141 empty empty -1 -8 0 10 #e4e4e4 #373737 0 0;
+#X obj 114 7 vsl 20 136 0 127 0 0 empty empty empty 0 -9 0 10 #e4e4e4 #000000 #373737 0 1;
+#X text 114 154 Vol.;
+#X text 157 154 Meter;
+#X text 6 102 On/Off;
+#X coords 0 0 1 1 200 140 0;
