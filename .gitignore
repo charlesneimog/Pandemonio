@@ -24,3 +24,5 @@ Pd4Web/pure-data/INSTALL.htm
 Pd4Web/pure-data/INSTALL.txt
 Pd4Web/pure-data/Makefile.am
 Pd4Web/pure-data/pd.pc.in
+.tmp
+Extras

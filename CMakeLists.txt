@@ -26,6 +26,12 @@ target_link_options(pd4web PRIVATE
     -sWASM_WORKERS=1
     -sAUDIO_WORKLET=1
 )
+include(Pd4Web/Externals/else.cmake)
+
+# Project Externals Libraries
+target_link_libraries(pd4web PRIVATE vu_tilde lb args message selector routetype router slice loadbanger wrap2)
 
 # FileSystem for the Patch
 set_target_properties(pd4web PROPERTIES LINK_FLAGS "--preload-file ${CMAKE_CURRENT_SOURCE_DIR}/WebPatch/index.pd@/index.pd")
+get_target_property(EMCC_LINK_FLAGS pd4web LINK_FLAGS)
+set_target_properties(pd4web PROPERTIES LINK_FLAGS "${EMCC_LINK_FLAGS} --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/.tmp@/Libs/")

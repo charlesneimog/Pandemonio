@@ -105,7 +105,7 @@
           background-color: rgb(226, 225, 225);
         "
       />
-      <div id="VexFlowNote" style="width: 90%; margin-left: 7%"></div>
+      <div id="VexFlowNote" style="width: auto; height: auto; margin-left: 7%"></div>
         <script>
           const {
             Formatter,
@@ -118,19 +118,25 @@
             Voice,
           } = Vex.Flow;
 
+          // get document size in pixels
+          const width = document.documentElement.clientWidth;
+          const height = document.documentElement.clientHeight;
+          
+          const scale = width / 250;
+          console.log(width, height, scale);
+
           // Create an SVG renderer and attach it to the DIV element
           const div = document.getElementById("VexFlowNote");
           const renderer = new Renderer(div, Renderer.Backends.SVG);
-          renderer.resize(500, 250);
+          renderer.resize(width, height* 0.2);
           const context = renderer.getContext();
           context.save();
-          context.scale(2, 2);
+          context.scale(scale, scale);
 
-          // Create a stave at position 10, 40 of width 400 on the canvas.
           var DEFAULT_COLOR = "white";
           context.setFillStyle(DEFAULT_COLOR);
           context.setStrokeStyle(DEFAULT_COLOR);
-          const stave = new Stave(0, 0, 250, { fill_style: DEFAULT_COLOR });
+          const stave = new Stave(0, 0, 200, { fill_style: DEFAULT_COLOR });
           stave.setEndBarType(Barline.type.END);
 
           stave.addClef("treble");
@@ -157,11 +163,12 @@
           voice.addTickables([newNote]);
           var formatter = new Formatter()
             .joinVoices([voice])
-            .format([voice], 150);
+            .format([voice], 125);
 
           voice.draw(context, stave);
           stave.setContext(context).draw();
           context.restore();
+
         </script>
       </div>
       <hr
@@ -195,6 +202,9 @@
           return;
         }
         Pd4Web.init();
+        // request full screen
+        document.documentElement.requestFullscreen();
+        
         document.removeEventListener("click", initPd4WebOnClick);
       }
 
