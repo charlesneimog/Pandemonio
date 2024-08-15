@@ -591,10 +591,7 @@ EM_BOOL Pd4Web::process(int numInputs, const AudioSampleFrame *In, int numOutput
 
     int ChCount = Out[0].numberOfChannels;
     float LibPdOuts[128 * ChCount];
-    // std::string in =
-    //     "Ch In: " + std::to_string(numInputs) + " | Ch Out: " + std::to_string(ChCount);
-    //
-    // _JS_post(in.c_str());
+    _JS_post("Processing");
 
     libpd_process_float(2, In[0].data, LibPdOuts);
     // TODO: Fix multiple channels
@@ -650,7 +647,6 @@ void Pd4Web::AudioWorkletProcessorCreated(EMSCRIPTEN_WEBAUDIO_T audioContext, EM
     libpd_add_to_search_path("./Libs/");
     libpd_add_to_search_path("./Extras/");
     libpd_add_to_search_path("./Audios/");
-    // libpd_add_to_search_path("./Abs/");
 
     libpd_start_message(1);
     libpd_add_float(1.0f);
