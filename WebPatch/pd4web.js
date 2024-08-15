@@ -86,7 +86,7 @@ var ENVIRONMENT_IS_WASM_WORKER = Module['$ww'];
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmpf63ob8wh.js
+// include: /tmp/tmp0957t2l2.js
 
   if (!Module.expectedDataFileDownloads) {
     Module.expectedDataFileDownloads = 0;
@@ -264,25 +264,25 @@ Module['FS_createPath']("/", "Libs", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/Extras/d3-al.webp", "start": 0, "end": 7360}, {"filename": "/Libs/Engine.pd", "start": 7360, "end": 11326}, {"filename": "/Libs/count.pd", "start": 11326, "end": 19785}, {"filename": "/Libs/insert.pd", "start": 19785, "end": 21235}, {"filename": "/Libs/rotate.pd", "start": 21235, "end": 22516}, {"filename": "/index.pd", "start": 22516, "end": 22829}], "remote_package_size": 22829});
+    loadPackage({"files": [{"filename": "/Extras/poema.txt", "start": 0, "end": 679}, {"filename": "/Libs/Engine.pd", "start": 679, "end": 5433}, {"filename": "/Libs/count.pd", "start": 5433, "end": 13892}, {"filename": "/Libs/insert.pd", "start": 13892, "end": 15342}, {"filename": "/Libs/rotate.pd", "start": 15342, "end": 16623}, {"filename": "/index.pd", "start": 16623, "end": 16936}], "remote_package_size": 16936});
 
   })();
 
-// end include: /tmp/tmpf63ob8wh.js
-// include: /tmp/tmpenugalpk.js
+// end include: /tmp/tmp0957t2l2.js
+// include: /tmp/tmpj22zbhcv.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if (Module['$ww'] || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: /tmp/tmpenugalpk.js
-// include: /tmp/tmput80w4u7.js
+  // end include: /tmp/tmpj22zbhcv.js
+// include: /tmp/tmpk21an3pt.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: /tmp/tmput80w4u7.js
+  // end include: /tmp/tmpk21an3pt.js
 
 
 // Sometimes an existing Module object exists with properties

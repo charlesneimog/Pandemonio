@@ -650,6 +650,7 @@ void Pd4Web::AudioWorkletProcessorCreated(EMSCRIPTEN_WEBAUDIO_T audioContext, EM
     libpd_add_to_search_path("./Libs/");
     libpd_add_to_search_path("./Extras/");
     libpd_add_to_search_path("./Audios/");
+    // libpd_add_to_search_path("./Abs/");
 
     libpd_start_message(1);
     libpd_add_float(1.0f);
