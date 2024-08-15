@@ -1225,8 +1225,10 @@ function OpenPatch(content) {
     let canvasLevel = 0;
     let id = 0;
 
-    while (Pd4Web.Canvas.lastChild) {
-        Pd4Web.Canvas.removeChild(Pd4Web.Canvas.lastChild);
+    if (Pd4Web.Canvas) {
+        while (Pd4Web.Canvas.lastChild) {
+            Pd4Web.Canvas.removeChild(Pd4Web.Canvas.lastChild);
+        }
     }
 
     const lines = content.split(";\n");

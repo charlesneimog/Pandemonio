@@ -5,10 +5,10 @@
 
 // Audio Config
 #define PD4WEB_CHS_IN 0
-#define PD4WEB_CHS_OUT 2
+#define PD4WEB_CHS_OUT 1
 
 // GUI Interface
-#define PD4WEB_GUI false
+#define PD4WEB_GUI true
 #define PD4WEB_FPS 60
 #define PD4WEB_AUTO_THEME true
 

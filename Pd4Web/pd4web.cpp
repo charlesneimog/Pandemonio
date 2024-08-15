@@ -591,7 +591,7 @@ EM_BOOL Pd4Web::process(int numInputs, const AudioSampleFrame *In, int numOutput
 
     int ChCount = Out[0].numberOfChannels;
     float LibPdOuts[128 * ChCount];
-    _JS_post("Processing");
+    printf("Processing\n");
 
     libpd_process_float(2, In[0].data, LibPdOuts);
     // TODO: Fix multiple channels
@@ -637,10 +637,8 @@ void Pd4Web::AudioWorkletProcessorCreated(EMSCRIPTEN_WEBAUDIO_T audioContext, EM
         .outputChannelCounts = nOutChannelsArray,
     };
 
-    // Init Instance
-
-    EMSCRIPTEN_AUDIO_WORKLET_NODE_T AudioWorkletNode =
-        emscripten_create_wasm_audio_worklet_node(audioContext, "pd4web", &options, &process, 0);
+    EMSCRIPTEN_AUDIO_WORKLET_NODE_T AudioWorkletNode = emscripten_create_wasm_audio_worklet_node(
+        audioContext, "pd4web", &options, &Pd4Web::process, 0);
 
     Pd4WebInitExternals();
 
@@ -648,12 +646,10 @@ void Pd4Web::AudioWorkletProcessorCreated(EMSCRIPTEN_WEBAUDIO_T audioContext, EM
     libpd_add_to_search_path("./Extras/");
     libpd_add_to_search_path("./Audios/");
 
+    // turn audio on
     libpd_start_message(1);
     libpd_add_float(1.0f);
     libpd_finish_message("pd", "dsp");
-
-    std::string Chs = "NInCh: " + std::to_string(NInCh) + " | NOutCh: " + std::to_string(NOutCh);
-    _JS_post(Chs.c_str());
     libpd_init_audio(NInCh, NOutCh, SR);
 
     if (!libpd_openfile("index.pd", "./")) {
