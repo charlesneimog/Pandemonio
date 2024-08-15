@@ -80,6 +80,49 @@
       font-family: Courier;
       font-size: 14px;
     }
+
+    
+    select {
+      appearance: none;
+      outline: 10px red;
+      border: 0;
+      box-shadow: none;
+      /* Personalize */
+      flex: 1;
+      padding: 0 1em;
+      color: #ffffff;
+      background-color: rgb(48, 48, 48);
+      background-image: none;
+      cursor: pointer;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+    .select {
+      position: relative;
+      display: flex;
+      width: 20em;
+      height: 3em;
+      border-radius: .25em;
+      overflow: hidden;
+    }
+    /* Arrow */
+    .select::after {
+      content: '\25BC';
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 1em;
+      background-color: #34495e;
+      transition: .25s all ease;
+      pointer-events: none;
+    }
+    /* Transition */
+    .select:hover::after {
+      color: #f39c12;
+    }
+    
   </style>
 
   <body style="height: 100%; background-color: rgb(48, 48, 48)">
@@ -93,7 +136,7 @@
         border-radius: 10px;
       "
     >
-      <h1 style="color: white">Pandemônio</h1>
+      <h1 style="color: white; font-size: 48px">Pandemônio</h1>     
       <label class="switch">
         <input type="checkbox" id="myCheckbox" />
         <span class="slider round"></span>
@@ -105,10 +148,12 @@
           background-color: rgb(226, 225, 225);
         "
       />
+
       <div
         id="VexFlowNote"
         style="height: 50%; margin-left: 0%; margin-top: 0%"
       ></div>
+
       <script>
         // Create the VexFlow renderer
         var VF = Vex.Flow;
@@ -133,15 +178,16 @@
         var note = null;
 
         // Create a stave and add notes as usual add id to stave
-        var stave = new VF.Stave(0, 0, scoreWidth);
+        var stave = new VF.Stave(0, 0, scoreWidth, { fill_style: 'white' });
         stave.setEndBarType(VF.Barline.type.END);
         stave.addClef("treble").setContext(context).draw();
 
+
         function setNoteAndSilaba(pitch, silaba) {
-            const notes = document.querySelectorAll(".vf-stavenote");
-            notes.forEach((note) => {
-              note.remove();
-            });
+          const notes = document.querySelectorAll(".vf-stavenote");
+          notes.forEach((note) => {
+            note.remove();
+          });
           stave.setContext(context).draw();
           note = new VF.StaveNote({
             clef: "treble",
@@ -150,6 +196,8 @@
             align_center: true,
           });
           note.setAttribute("id", "mynote");
+          note.setLedgerLineStyle({ fillStyle: 'white', strokeStyle: 'white' });
+          note.setFlagStyle({ fillStyle: 'white', strokeStyle: 'white' });
 
           var silaba = silaba;
           const lyricsAnnotation = new VF.Annotation(silaba);
@@ -178,6 +226,12 @@
     <hr
       style="width: 90%; margin-top: 20px; background-color: rgb(226, 225, 225)"
     />
+    <div id="Phrase" style="height: 50%; margin-left: 0%; margin-top: 0%">
+      <h1
+        id="phrase"
+        style="font-size: 30px; color: white; text-align: center"
+      ></h1>
+    </div>
 
     <script>
       let Pd4Web = null;
@@ -192,7 +246,7 @@
           );
           return;
         }
-        Pd4Web.init();       
+        Pd4Web.init();
         document.removeEventListener("click", initPd4WebOnClick);
 
         Pd4Web.onListReceived("mylist", function (list) {
@@ -200,7 +254,12 @@
           const silaba = list[0];
           console.log(pitch, silaba);
           setNoteAndSilaba(pitch, silaba);
-          
+        });
+
+        Pd4Web.onListReceived("phrase", function (list) {
+          // join all elements of the list
+          const phrase = list.join(" ");
+          document.getElementById("phrase").innerText = phrase;
         });
       }
       document.addEventListener("click", initPd4WebOnClick);
@@ -215,7 +274,9 @@
         }
       });
 
-      
+      function handleClick(voice) {
+        console.log(voice);
+      }
     </script>
   </body>
 </html>
