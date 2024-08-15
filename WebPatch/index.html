@@ -81,7 +81,6 @@
       font-size: 14px;
     }
 
-    
     select {
       appearance: none;
       outline: 10px red;
@@ -104,25 +103,24 @@
       display: flex;
       width: 20em;
       height: 3em;
-      border-radius: .25em;
+      border-radius: 0.25em;
       overflow: hidden;
     }
     /* Arrow */
     .select::after {
-      content: '\25BC';
+      content: "\25BC";
       position: absolute;
       top: 0;
       right: 0;
       padding: 1em;
       background-color: #34495e;
-      transition: .25s all ease;
+      transition: 0.25s all ease;
       pointer-events: none;
     }
     /* Transition */
     .select:hover::after {
       color: #f39c12;
     }
-    
   </style>
 
   <body style="height: 100%; background-color: rgb(48, 48, 48)">
@@ -136,7 +134,11 @@
         border-radius: 10px;
       "
     >
-      <h1 style="color: white; font-size: 48px">Pandemônio</h1>     
+      <h1 style="color: white; font-size: 48px">Pandemônio</h1>
+      <p style="color: white; font-size: 24px">
+        Charles K. Neimog | Cláudia Bergo
+      </p>
+
       <label class="switch">
         <input type="checkbox" id="myCheckbox" />
         <span class="slider round"></span>
@@ -149,22 +151,25 @@
         "
       />
 
-      <div
-        id="VexFlowNote"
-        style="height: 50%; margin-left: 0%; margin-top: 0%"
-      ></div>
-
+      <div id="VexFlowNote"></div>
       <script>
-        // Create the VexFlow renderer
         var VF = Vex.Flow;
+        var CLEF = "treble";
         Vex.Flow.setMusicFont("Bravura");
 
         var div = document.getElementById("VexFlowNote");
         var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
+        // check if I am on a mobile device
+        if (/Mobi/.test(navigator.userAgent)) {
+          var scaleFactor = 5;
+        } else {
+          var scaleFactor = 2;
+        }
+
         const scoreWidth = 160;
-        const scoreHeight = 150;
-        var scaleFactor = 5;
+        const scoreHeight = 130;
+
         renderer.resize(scoreWidth * scaleFactor, scoreHeight * scaleFactor);
 
         // Get the rendering context
@@ -178,26 +183,46 @@
         var note = null;
 
         // Create a stave and add notes as usual add id to stave
-        var stave = new VF.Stave(0, 0, scoreWidth, { fill_style: 'white' });
+        var stave = new VF.Stave(0, 0, scoreWidth, { fill_style: "white" });
         stave.setEndBarType(VF.Barline.type.END);
-        stave.addClef("treble").setContext(context).draw();
-
+        stave.addClef(CLEF).setContext(context).draw();
 
         function setNoteAndSilaba(pitch, silaba) {
+          const pitchname = pitch[0];
+          let remainingPitch = pitch.slice(1);
+          const pitchoctave = remainingPitch[remainingPitch.length - 1];
+
+          var acc = remainingPitch.slice(0, -1);
+
+          var vexPitch = pitchname;
+          if (acc == "#+") {
+            acc = "++";
+          } else if (acc == "b-") {
+            acc = "db";
+          } else if ((acc = "-")) {
+            acc = "d";
+          }
+          //vexPitch += remainingPitch;
+          vexPitch += "/";
+          vexPitch += pitchoctave;
+
+          console.log(vexPitch);
+
+          //return;
           const notes = document.querySelectorAll(".vf-stavenote");
           notes.forEach((note) => {
             note.remove();
           });
           stave.setContext(context).draw();
           note = new VF.StaveNote({
-            clef: "treble",
-            keys: [pitch],
+            clef: CLEF,
+            keys: [vexPitch],
             duration: "w",
             align_center: true,
           });
           note.setAttribute("id", "mynote");
-          note.setLedgerLineStyle({ fillStyle: 'white', strokeStyle: 'white' });
-          note.setFlagStyle({ fillStyle: 'white', strokeStyle: 'white' });
+          note.setLedgerLineStyle({ fillStyle: "white", strokeStyle: "white" });
+          note.setFlagStyle({ fillStyle: "white", strokeStyle: "white" });
 
           var silaba = silaba;
           const lyricsAnnotation = new VF.Annotation(silaba);
@@ -211,6 +236,11 @@
           );
 
           note.addModifier(lyricsAnnotation, 0);
+
+          // Accidental
+          // https://github.com/0xfe/vexflow/wiki/Microtonal-Support
+          const vexAcc = new VF.Accidental(acc);
+          note.addModifier(vexAcc, 0);
 
           voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
           voice.addTickables([note]);
@@ -252,14 +282,13 @@
         Pd4Web.onListReceived("mylist", function (list) {
           const pitch = list[1];
           const silaba = list[0];
-          console.log(pitch, silaba);
           setNoteAndSilaba(pitch, silaba);
         });
 
-        Pd4Web.onListReceived("phrase", function (list) {
+        Pd4Web.onListReceived("poem-phrase", function (list) {
           // join all elements of the list
-          const phrase = list.join(" ");
-          document.getElementById("phrase").innerText = phrase;
+          const poemPhrase = list.join(" ");
+          document.getElementById("phrase").innerText = poemPhrase;
         });
       }
       document.addEventListener("click", initPd4WebOnClick);
