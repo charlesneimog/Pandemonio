@@ -86,7 +86,7 @@ var ENVIRONMENT_IS_WASM_WORKER = Module['$ww'];
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmpfni3yjpi.js
+// include: /tmp/tmpjy_kp_92.js
 
   if (!Module.expectedDataFileDownloads) {
     Module.expectedDataFileDownloads = 0;
@@ -264,25 +264,25 @@ Module['FS_createPath']("/", "Libs", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/Extras/poema.txt", "start": 0, "end": 679}, {"filename": "/Libs/Engine.pd", "start": 679, "end": 5353}, {"filename": "/Libs/count.pd", "start": 5353, "end": 13812}, {"filename": "/Libs/group.pd", "start": 13812, "end": 16071}, {"filename": "/Libs/insert.pd", "start": 16071, "end": 17521}, {"filename": "/Libs/iterate.pd", "start": 17521, "end": 19540}, {"filename": "/Libs/midi2note.pd", "start": 19540, "end": 25587}, {"filename": "/Libs/rotate.pd", "start": 25587, "end": 26868}, {"filename": "/index.pd", "start": 26868, "end": 27181}], "remote_package_size": 27181});
+    loadPackage({"files": [{"filename": "/Extras/poema.txt", "start": 0, "end": 680}, {"filename": "/Libs/Engine.pd", "start": 680, "end": 5354}, {"filename": "/Libs/count.pd", "start": 5354, "end": 13813}, {"filename": "/Libs/group.pd", "start": 13813, "end": 16072}, {"filename": "/Libs/insert.pd", "start": 16072, "end": 17522}, {"filename": "/Libs/iterate.pd", "start": 17522, "end": 19541}, {"filename": "/Libs/midi2note.pd", "start": 19541, "end": 25588}, {"filename": "/Libs/rotate.pd", "start": 25588, "end": 26869}, {"filename": "/index.pd", "start": 26869, "end": 35333}], "remote_package_size": 35333});
 
   })();
 
-// end include: /tmp/tmpfni3yjpi.js
-// include: /tmp/tmpa7rfxzns.js
+// end include: /tmp/tmpjy_kp_92.js
+// include: /tmp/tmpe97q8zku.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if (Module['$ww'] || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: /tmp/tmpa7rfxzns.js
-// include: /tmp/tmp_6upm_qq.js
+  // end include: /tmp/tmpe97q8zku.js
+// include: /tmp/tmpar1i4g56.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: /tmp/tmp_6upm_qq.js
+  // end include: /tmp/tmpar1i4g56.js
 
 
 // Sometimes an existing Module object exists with properties

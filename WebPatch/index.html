@@ -150,7 +150,16 @@
           background-color: rgb(226, 225, 225);
         "
       />
-
+      <div
+        id="duration-bar"
+        style="
+          margin-left: 0%;
+          margin-top: 20px;
+          width: 100%;
+          height: 20px;
+          background-color: white;
+        "
+      ></div>
       <div id="VexFlowNote"></div>
       <script>
         var VF = Vex.Flow;
@@ -253,6 +262,7 @@
         }
       </script>
     </div>
+
     <hr
       style="width: 90%; margin-top: 20px; background-color: rgb(226, 225, 225)"
     />
@@ -262,23 +272,72 @@
         style="font-size: 30px; color: white; text-align: center"
       ></h1>
     </div>
-
     <script>
+      function generateNumbersWithSum(total, numElements, minValue, maxValue) {
+        // Thanks to llama
+        let numbers = Array.from(
+          { length: numElements },
+          () => Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+        );
+        let currentSum = numbers.reduce((acc, num) => acc + num, 0);
+        let difference = total - currentSum;
+        while (difference !== 0) {
+          for (let i = 0; i < numElements; i++) {
+            if (difference === 0) break;
+            if (difference > 0) {
+              let increment = Math.min(difference, maxValue - numbers[i]);
+              numbers[i] += increment;
+              difference -= increment;
+            } else if (difference < 0) {
+              let decrement = Math.min(-difference, numbers[i] - minValue);
+              numbers[i] -= decrement;
+              difference += decrement;
+            }
+          }
+        }
+        return numbers;
+      }
+
+      // Generate a random list of 4 numbers that sum 100
+
       let Pd4Web = null;
       Pd4WebModule().then((Pd4WebModulePromise) => {
         Pd4Web = new Pd4WebModulePromise.Pd4Web();
       });
 
       async function initPd4WebOnClick(event) {
+        const checkbox = document.getElementById("myCheckbox");
+        checkbox.checked = false;
+
+        const values = generateNumbersWithSum(300000, 22, 8000, 20000);
+        const sum = values.reduce((acc, num) => acc + num, 0);
+        if (sum !== 300000) {
+          alert("Error: sum is not 300000");
+          return;
+        }
+
         if (Pd4Web === null) {
           alert(
             "Pd4Web is not loaded yet. Please wait a few seconds and try again."
           );
           return;
         }
-        console.log("Iniciando Pd4Web;");
+
         Pd4Web.init();
+
+        setTimeout(() => {
+          Pd4Web.sendFloat("on-off", 1);
+          Pd4Web.sendList("duration-list", values);
+        }, 300);
+
         document.removeEventListener("click", initPd4WebOnClick);
+        checkbox.addEventListener("click", function () {
+          if (checkbox.checked) {
+            Pd4Web.sendFloat("on-off", 1);
+          } else {
+            Pd4Web.sendFloat("on-off", 0);
+          }
+        });
 
         Pd4Web.onListReceived("mylist", function (list) {
           const pitch = list[1];
@@ -287,26 +346,16 @@
         });
 
         Pd4Web.onListReceived("poem-phrase", function (list) {
-          // join all elements of the list
           const poemPhrase = list.join(" ");
           document.getElementById("phrase").innerText = poemPhrase;
         });
+
+        Pd4Web.onFloatReceived("duration-bar", function (number) {
+          const durationBar = document.getElementById("duration-bar");
+          durationBar.style.width = number + "%";
+        });
       }
       document.addEventListener("click", initPd4WebOnClick);
-
-      // on/off switch
-      const checkbox = document.getElementById("myCheckbox");
-      checkbox.addEventListener("click", function () {
-        if (checkbox.checked) {
-          Pd4Web.sendFloat("on-off", 1);
-        } else {
-          Pd4Web.sendFloat("on-off", 0);
-        }
-      });
-
-      function handleClick(voice) {
-        console.log(voice);
-      }
     </script>
   </body>
 </html>

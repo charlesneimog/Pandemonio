@@ -29,7 +29,7 @@ target_link_options(pd4web PRIVATE
 include(Pd4Web/Externals/else.cmake)
 
 # Project Externals Libraries
-target_link_libraries(pd4web PRIVATE vu_tilde lb args message selector routetype router slice loadbanger wrap2 format spread quantizer)
+target_link_libraries(pd4web PRIVATE vu_tilde router args lb selector format spread quantizer)
 
 # FileSystem for the Patch
 set_target_properties(pd4web PROPERTIES LINK_FLAGS "--preload-file ${CMAKE_CURRENT_SOURCE_DIR}/WebPatch/index.pd@/index.pd")

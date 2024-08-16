@@ -1657,19 +1657,21 @@ async function Pd4WebInitGui(autoTheme) {
     darkModeMediaQuery.addEventListener("change", ThemeListener);
 
     // Open Patch
-    var File = "./index.pd";
-    fetch(File)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.text();
-        })
-        .then((textContent) => {
-            UpdatePatchDivSize(textContent);
-            OpenPatch(textContent);
-        })
-        .catch((error) => {
-            console.error("There has been a problem with your fetch operation:", error);
-        });
+    if (Pd4Web.Canvas) {
+        var File = "./index.pd";
+        fetch(File)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.text();
+            })
+            .then((textContent) => {
+                UpdatePatchDivSize(textContent);
+                OpenPatch(textContent);
+            })
+            .catch((error) => {
+                console.error("There has been a problem with your fetch operation:", error);
+            });
+    }
 }
