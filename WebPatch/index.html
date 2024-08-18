@@ -9,6 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vexflow/build/cjs/vexflow.js"></script>
   </head>
   <style>
+    @media (min-width: 1080px) {
+      body {
+        max-width: 700px;
+        margin: 0 auto;
+        overflow-x: hidden;
+      }
+    }
     /* The switch - the box around the slider */
     .switch {
       position: relative;
@@ -81,45 +88,24 @@
       font-size: 14px;
     }
 
-    select {
-      appearance: none;
-      outline: 10px red;
+    select#naipe-select {
+      margin-top: 20px;
+      display: inline-block;
+      outline: 0;
       border: 0;
-      box-shadow: none;
-      /* Personalize */
-      flex: 1;
-      padding: 0 1em;
-      color: #ffffff;
-      background-color: rgb(48, 48, 48);
-      background-image: none;
       cursor: pointer;
-    }
-
-    select::-ms-expand {
-      display: none;
-    }
-    .select {
-      position: relative;
-      display: flex;
-      width: 20em;
-      height: 3em;
-      border-radius: 0.25em;
-      overflow: hidden;
-    }
-    /* Arrow */
-    .select::after {
-      content: "\25BC";
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 1em;
-      background-color: #34495e;
-      transition: 0.25s all ease;
-      pointer-events: none;
-    }
-    /* Transition */
-    .select:hover::after {
-      color: #f39c12;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+      will-change: box-shadow, transform;
+      text-align: center;
+      background: rgb(70, 70, 70);
+      box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+        0px 4px 2px -3px rgba(108, 108, 108, 0.3), inset 0px -3px 0px #5b5b5b;
+      height: 46px;
+      padding: 0 30px;
+      font-size: 16px;
+      border-radius: 6px;
+      color: #ffffff;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
     }
   </style>
 
@@ -128,13 +114,11 @@
       id="control-gui"
       style="
         background-color: rgb(48, 48, 48);
-        width: 100%;
-        height: 20%;
         text-align: center;
         border-radius: 10px;
       "
     >
-      <h1 style="color: white; font-size: 48px">Pandemônio</h1>
+      <h1 style="color: white; font-size: 48px">Pandemônio (2024)</h1>
       <p style="color: white; font-size: 24px">
         Charles K. Neimog | Cláudia Bergo
       </p>
@@ -143,6 +127,14 @@
         <input type="checkbox" id="myCheckbox" />
         <span class="slider round"></span>
       </label>
+      <br />
+      <select id="naipe-select" onchange="chooseNaipe()">
+        <option value="none">Escolha seu Naipe!</option>
+        <option value="Soprano">Soprano</option>
+        <option value="Contralto">Contralto</option>
+        <option value="Tenor">Tenor</option>
+        <option value="Baixo">Baixo</option>
+      </select>
       <hr
         style="
           width: 90%;
@@ -153,9 +145,9 @@
       <div
         id="duration-bar"
         style="
-          margin-left: 0%;
           margin-top: 20px;
           width: 100%;
+
           height: 20px;
           background-color: white;
         "
@@ -190,11 +182,11 @@
         var group = renderer.getContext().openGroup();
 
         var note = null;
-
-        // Create a stave and add notes as usual add id to stave
         var stave = new VF.Stave(0, 0, scoreWidth, { fill_style: "white" });
         stave.setEndBarType(VF.Barline.type.END);
         stave.addClef(CLEF).setContext(context).draw();
+
+        // remove CLEF from the stave
 
         function setNoteAndSilaba(pitch, silaba) {
           const pitchname = pitch[0];
@@ -214,8 +206,6 @@
           //vexPitch += remainingPitch;
           vexPitch += "/";
           vexPitch += pitchoctave;
-
-          console.log(vexPitch);
 
           //return;
           const notes = document.querySelectorAll(".vf-stavenote");
@@ -273,6 +263,41 @@
       ></h1>
     </div>
     <script>
+      function chooseNaipe() {
+        const naipe = document.getElementById("naipe-select").value;
+        if (naipe === "none") {
+          return;
+        }
+        if (Pd4Web === null) {
+          alert(
+            "Pd4Web is not loaded yet. Please wait a few seconds and try again."
+          );
+          return;
+        }
+        if (naipe == "Baixo") {
+          Pd4Web.sendFloat("naipe", 1);
+          CLEF = "bass";
+        } else if (naipe == "Tenor") {
+          Pd4Web.sendFloat("naipe", 2);
+          CLEF = "bass";
+        } else if (naipe == "Contralto") {
+          Pd4Web.sendFloat("naipe", 3);
+          CLEF = "treble";
+        } else if (naipe == "Soprano") {
+          Pd4Web.sendFloat("naipe", 4);
+          CLEF = "treble";
+        }
+        const clefs = document.querySelectorAll(".vf-clef");
+        clefs.forEach((clef) => {
+          clef.remove();
+        });
+        stave = new VF.Stave(0, 0, scoreWidth, { fill_style: "white" });
+        stave.setEndBarType(VF.Barline.type.END);
+        stave.addClef(CLEF).setContext(context).draw();
+        return;
+      }
+    </script>
+    <script>
       function generateNumbersWithSum(total, numElements, minValue, maxValue) {
         // Thanks to llama
         let numbers = Array.from(
@@ -298,6 +323,23 @@
         return numbers;
       }
 
+      const values = generateNumbersWithSum(300000, 22, 8000, 20000);
+      const sum = values.reduce((acc, num) => acc + num, 0);
+      if (sum !== 300000) {
+        alert("Error: sum is not 300000");
+      }
+
+      const msInitEnd = 30000;
+      var globalDur = [];
+      globalDur.push(msInitEnd);
+      const chords = generateNumbersWithSum(180000, 6, 20000, 35000);
+      const transitions = generateNumbersWithSum(60000, 6, 5000, 15000);
+      for (let i = 0; i < 6; i++) {
+        globalDur.push(chords[i]);
+        globalDur.push(transitions[i]);
+      }
+      globalDur.push(msInitEnd);
+
       // Generate a random list of 4 numbers that sum 100
 
       let Pd4Web = null;
@@ -305,39 +347,18 @@
         Pd4Web = new Pd4WebModulePromise.Pd4Web();
       });
 
-      async function initPd4WebOnClick(event) {
-        const checkbox = document.getElementById("myCheckbox");
-        checkbox.checked = false;
+      var Pd4WebInitiate = false;
 
-        const values = generateNumbersWithSum(300000, 22, 8000, 20000);
-        const sum = values.reduce((acc, num) => acc + num, 0);
-        if (sum !== 300000) {
-          alert("Error: sum is not 300000");
+      // ================== INIT ==================
+      async function Pd4WebOnClick(event) {
+        if (Pd4WebInitiate) {
+          console.log("Pd4Web already initiated");
           return;
         }
-
-        if (Pd4Web === null) {
-          alert(
-            "Pd4Web is not loaded yet. Please wait a few seconds and try again."
-          );
-          return;
-        }
-
+        Pd4WebInitiate = true;
         Pd4Web.init();
-
-        setTimeout(() => {
-          Pd4Web.sendFloat("on-off", 1);
-          Pd4Web.sendList("duration-list", values);
-        }, 300);
-
-        document.removeEventListener("click", initPd4WebOnClick);
-        checkbox.addEventListener("click", function () {
-          if (checkbox.checked) {
-            Pd4Web.sendFloat("on-off", 1);
-          } else {
-            Pd4Web.sendFloat("on-off", 0);
-          }
-        });
+        Pd4Web.sendList("duration-list", values);
+        Pd4Web.sendList("sectiondur-list", globalDur);
 
         Pd4Web.onListReceived("mylist", function (list) {
           const pitch = list[1];
@@ -348,14 +369,40 @@
         Pd4Web.onListReceived("poem-phrase", function (list) {
           const poemPhrase = list.join(" ");
           document.getElementById("phrase").innerText = poemPhrase;
+          if (poemPhrase === "Respire!") {
+            const notes = document.querySelectorAll(".vf-stavenote");
+            notes.forEach((note) => {
+              note.remove();
+            });
+          }
         });
 
         Pd4Web.onFloatReceived("duration-bar", function (number) {
           const durationBar = document.getElementById("duration-bar");
           durationBar.style.width = number + "%";
         });
+        console.log("Pd4Web initiated");
       }
-      document.addEventListener("click", initPd4WebOnClick);
+
+      const checkbox = document.getElementById("myCheckbox");
+      checkbox.addEventListener("click", function () {
+        const naipe = document.getElementById("naipe-select").value;
+        if (naipe === "none") {
+          checkbox.checked = false;
+          alert("Please choose a naipe!");
+          return;
+        }
+        Pd4WebOnClick().then(() => {
+          if (checkbox.checked) {
+            setTimeout(() => {
+              Pd4Web.sendFloat("on-off", 1);
+            }, 100);
+          } else {
+            Pd4Web.sendFloat("on-off", 0);
+          }
+        });
+      });
+      //document.addEventListener("click", initPd4WebOnClick);
     </script>
   </body>
 </html>

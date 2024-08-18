@@ -1,3 +1,1929 @@
+
+(:patch
+ (:name "Pitches")
+ (:doc "")
+ (:info
+  (:created "2024/08/18 13:35:31")
+  (:modified "2024/08/18 16:23:48")
+  (:by "om-sharp")
+  (:version 1.07))
+ (:window (:size (951 1046)) (:position (6 28)))
+ (:grid nil)
+ (:lock nil)
+ (:boxes
+  (:box
+   (:library "OM-JI")
+   (:type :function)
+   (:reference (:symbol "DIAMOND" "OM-JI"))
+   (:group-id nil)
+   (:name "diamond")
+   (:x 35)
+   (:y 37)
+   (:w 86)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "LIMITE")
+     (:value 11)
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "out0") (:reactive nil))
+    (:output (:name "out1") (:reactive nil)))
+   (:id 0))
+  (:box
+   (:type :value)
+   (:reference (:list unsigned-byte 4))
+   (:group-id nil)
+   (:name "value box")
+   (:x 62)
+   (:y 2)
+   (:w 32)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value 11)
+   (:id 1))
+  (:box
+   (:library "OM-JI")
+   (:type :function)
+   (:reference (:symbol "RT->MC" "OM-JI"))
+   (:group-id nil)
+   (:name "rt->mc")
+   (:x 95)
+   (:y 185)
+   (:w 72)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "RATIO")
+     (:value 11/8)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "FUNDAMENTAL")
+     (:value 6000)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 2))
+  (:box
+   (:type :function)
+   (:reference car)
+   (:group-id nil)
+   (:name "car")
+   (:x 31)
+   (:y 75)
+   (:w 55)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "X")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 3))
+  (:box
+   (:type :value)
+   (:reference (:list unsigned-byte 16))
+   (:group-id nil)
+   (:name "value box")
+   (:x 124)
+   (:y 37)
+   (:w 46)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value 5300)
+   (:id 4))
+  (:box
+   (:library "OM-JI")
+   (:type :function)
+   (:reference (:symbol "RT-OCTAVE" "OM-JI"))
+   (:group-id nil)
+   (:name "rt-octave")
+   (:x 38)
+   (:y 143)
+   (:w 85)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "FRAQ")
+     (:value 3/2)
+     (:reactive nil))
+    (:input
+     (:type :optional)
+     (:name "octave")
+     (:value 2)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 5))
+  (:box
+   (:type :value)
+   (:reference (:list unsigned-byte 4))
+   (:group-id nil)
+   (:name "value box")
+   (:x 76)
+   (:y 108)
+   (:w 32)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value 4)
+   (:id 6))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 88)
+   (:y 216)
+   (:w 146)
+   (:h 210)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size (951 520)) (:position (963 1066)))
+   (:edition-params (:font-size 48))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 5300 6296 7314 5949 5798 6731))
+       (:lvel (:list 80 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0 0))
+       (:ldur (:list 1000 1000 1000 1000 1000 1000))
+       (:lchan (:list 1 1 1 1 1 1))
+       (:lport (:list nil nil nil nil nil nil))))))
+   (:id 7))
+  (:box
+   (:library "OM-Sieves")
+   (:type :function)
+   (:reference s-union-l)
+   (:group-id nil)
+   (:name "s-union-l")
+   (:x 505)
+   (:y 81)
+   (:w 86)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SIEVE")
+     (:value (:list (:list 19 16 64) (:list 11 16 64)))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 8))
+  (:box
+   (:type :value)
+   (:reference cons)
+   (:group-id nil)
+   (:name "value box")
+   (:x 478)
+   (:y 46)
+   (:w 153)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value (:list (:list 19 17 128) (:list 11 17 128)))
+   (:id 9))
+  (:box
+   (:library "OM-Sieves")
+   (:type :function)
+   (:reference revel-sieve)
+   (:group-id nil)
+   (:name "revel-sieve")
+   (:x 499)
+   (:y 115)
+   (:w 98)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 10))
+  (:box
+   (:library "OM-JI")
+   (:type :function)
+   (:reference (:symbol "DIAMOND-IDENTITY" "OM-JI"))
+   (:group-id nil)
+   (:name "diamond-identity")
+   (:x 484)
+   (:y 155)
+   (:w 129)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "IDENTITY")
+     (:value (:list 11 19 97))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "out0") (:reactive nil))
+    (:output (:name "out1") (:reactive nil)))
+   (:id 11))
+  (:box
+   (:type :function)
+   (:reference car)
+   (:group-id nil)
+   (:name "car")
+   (:x 550)
+   (:y 185)
+   (:w 55)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "X")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 12))
+  (:box
+   (:library "OM-JI")
+   (:type :function)
+   (:reference (:symbol "RT->MC" "OM-JI"))
+   (:group-id nil)
+   (:name "rt->mc")
+   (:x 558)
+   (:y 251)
+   (:w 72)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "RATIO")
+     (:value 11/8)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "FUNDAMENTAL")
+     (:value 6000)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 13))
+  (:box
+   (:type :value)
+   (:reference (:list unsigned-byte 16))
+   (:group-id nil)
+   (:name "value box")
+   (:x 624)
+   (:y 183)
+   (:w 46)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value 5800)
+   (:id 14))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 96)
+   (:y 471)
+   (:w 126)
+   (:h 182)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size (951 1046)) (:position (-746 28)))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 4600 5800 7000))
+       (:lvel (:list 80 80 80))
+       (:loffset (:list 0 0 0))
+       (:ldur (:list 1000 1000 1000))
+       (:lchan (:list 1 1 1))
+       (:lport (:list nil nil nil))))))
+   (:id 15))
+  (:box
+   (:type :value)
+   (:reference cons)
+   (:group-id nil)
+   (:name "value box")
+   (:x 75)
+   (:y 429)
+   (:w 116)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value (:list 4600 5800 7000))
+   (:id 16))
+  (:comment
+   (:x 247)
+   (:y 315)
+   (:w 197)
+   (:h 36)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text
+    "Section 1
+")
+   (:id 17))
+  (:comment
+   (:x 235)
+   (:y 491)
+   (:w 197)
+   (:h 22)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text "Section 2")
+   (:id 18))
+  (:comment
+   (:x 239)
+   (:y 677)
+   (:w 76)
+   (:h 46)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text
+    "Section 3
+")
+   (:id 19))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 98)
+   (:y 671)
+   (:w 118)
+   (:h 221)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 5800 6664 7099 6038 6468 6633 4412))
+       (:lvel (:list 80 80 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0 0 0))
+       (:ldur (:list 1000 1000 1000 1000 1000 1000 1000))
+       (:lchan (:list 1 1 1 1 1 1 1))
+       (:lport (:list nil nil nil nil nil nil nil))))))
+   (:id 20))
+  (:box
+   (:library "OM-JI")
+   (:type :function)
+   (:reference (:symbol "RANGE-REDUCE" "OM-JI"))
+   (:group-id nil)
+   (:name "range-reduce")
+   (:x 630)
+   (:y 327)
+   (:w 112)
+   (:h 30)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "NOTELIST")
+     (:value (:list 4800 7200 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "GRAVE")
+     (:value 6000)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "AGUDA")
+     (:value 7902)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 21))
+  (:box
+   (:type :value)
+   (:reference (:list unsigned-byte 16))
+   (:group-id nil)
+   (:name "value box")
+   (:x 663)
+   (:y 292)
+   (:w 46)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value 4400)
+   (:id 22))
+  (:box
+   (:type :value)
+   (:reference (:list unsigned-byte 16))
+   (:group-id nil)
+   (:name "value box")
+   (:x 757)
+   (:y 243)
+   (:w 46)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value 7200)
+   (:id 23))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 369)
+   (:y 715)
+   (:w 126)
+   (:h 170)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 4600 5800 7000))
+       (:lvel (:list 80 80 80))
+       (:loffset (:list 0 0 0))
+       (:ldur (:list 1000 1000 1000))
+       (:lchan (:list 1 1 1))
+       (:lport (:list nil nil nil))))))
+   (:id 24))
+  (:box
+   (:type :value)
+   (:reference cons)
+   (:group-id nil)
+   (:name "value box")
+   (:x 348)
+   (:y 673)
+   (:w 116)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value (:list 4600 5800 7000))
+   (:id 25))
+  (:comment
+   (:x 508)
+   (:y 735)
+   (:w 197)
+   (:h 36)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text
+    "Section 4
+")
+   (:id 26))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 600)
+   (:y 382)
+   (:w 132)
+   (:h 176)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size (951 1046)) (:position (1715 28)))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic
+        (:list
+         5800
+         6664
+         7099
+         6038
+         6468
+         6633
+         4412
+         4699
+         4746
+         4945
+         5142
+         5161
+         5352
+         5464
+         5525
+         5681))
+       (:lvel (:list 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0))
+       (:ldur
+        (:list
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000))
+       (:lchan (:list 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))
+       (:lport
+        (:list
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil))))))
+   (:id 27))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 627)
+   (:y 710)
+   (:w 132)
+   (:h 176)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic
+        (:list
+         5800
+         6664
+         7099
+         6038
+         6468
+         6633
+         4412
+         4699
+         4746
+         4945
+         5142
+         5161
+         5352
+         5464
+         5525
+         5681))
+       (:lvel (:list 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0))
+       (:ldur
+        (:list
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000))
+       (:lchan (:list 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))
+       (:lport
+        (:list
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil))))))
+   (:id 28))
+  (:comment
+   (:x 770)
+   (:y 740)
+   (:w 197)
+   (:h 22)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text "Section 5")
+   (:id 29))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 897)
+   (:y 722)
+   (:w 126)
+   (:h 170)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 4600 5300 5800 6000 7000))
+       (:lvel (:list 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0))
+       (:ldur (:list 1000 1000 1000 1000 1000))
+       (:lchan (:list 1 1 1 1 1))
+       (:lport (:list nil nil nil nil nil))))))
+   (:id 30))
+  (:box
+   (:type :value)
+   (:reference cons)
+   (:group-id nil)
+   (:name "value box")
+   (:x 845)
+   (:y 687)
+   (:w 178)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value (:list 4600 5300 5800 6000 7000))
+   (:id 31))
+  (:comment
+   (:x 1024)
+   (:y 724)
+   (:w 74)
+   (:h 35)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text "Section 6")
+   (:id 32))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 1103)
+   (:y 707)
+   (:w 132)
+   (:h 176)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size (951 1046)) (:position (1715 28)))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic
+        (:list
+         5800
+         6664
+         7099
+         6038
+         6468
+         6633
+         4412
+         4699
+         4746
+         4945
+         5142
+         5161
+         5352
+         5464
+         5525
+         5681))
+       (:lvel (:list 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0))
+       (:ldur
+        (:list
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000))
+       (:lchan (:list 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))
+       (:lport
+        (:list
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil
+         nil))))))
+   (:id 33))
+  (:comment
+   (:x 1246)
+   (:y 737)
+   (:w 68)
+   (:h 36)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text "Section 7")
+   (:id 34))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 1116)
+   (:y 460)
+   (:w 126)
+   (:h 170)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 4600 5800 7000))
+       (:lvel (:list 80 80 80))
+       (:loffset (:list 0 0 0))
+       (:ldur (:list 1000 1000 1000))
+       (:lchan (:list 1 1 1))
+       (:lport (:list nil nil nil))))))
+   (:id 35))
+  (:box
+   (:type :value)
+   (:reference cons)
+   (:group-id nil)
+   (:name "value box")
+   (:x 1095)
+   (:y 418)
+   (:w 116)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value (:list 4600 5800 7000))
+   (:id 36))
+  (:comment
+   (:x 1243)
+   (:y 512)
+   (:w 68)
+   (:h 36)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text
+    "Section 8
+")
+   (:id 37))
+  (:comment
+   (:x 1239)
+   (:y 146)
+   (:w 76)
+   (:h 36)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text
+    "Section 9
+")
+   (:id 38))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 1098)
+   (:y 140)
+   (:w 118)
+   (:h 221)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 5800 6664 7099 6038 6468 6633 4412))
+       (:lvel (:list 80 80 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0 0 0))
+       (:ldur (:list 1000 1000 1000 1000 1000 1000 1000))
+       (:lchan (:list 1 1 1 1 1 1 1))
+       (:lport (:list nil nil nil nil nil nil nil))))))
+   (:id 39))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 1404)
+   (:y 169)
+   (:w 126)
+   (:h 182)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 4600 5800 7000))
+       (:lvel (:list 80 80 80))
+       (:loffset (:list 0 0 0))
+       (:ldur (:list 1000 1000 1000))
+       (:lchan (:list 1 1 1))
+       (:lport (:list nil nil nil))))))
+   (:id 40))
+  (:box
+   (:type :value)
+   (:reference cons)
+   (:group-id nil)
+   (:name "value box")
+   (:x 1383)
+   (:y 127)
+   (:w 116)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value (:list 4600 5800 7000))
+   (:id 41))
+  (:comment
+   (:x 1543)
+   (:y 189)
+   (:w 197)
+   (:h 36)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text
+    "Section 10
+")
+   (:id 42))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 1404)
+   (:y 391)
+   (:w 146)
+   (:h 210)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size (951 1046)) (:position (1647 28)))
+   (:edition-params (:font-size 48))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 5300 6296 7314 5949 5798 6731))
+       (:lvel (:list 80 80 80 80 80 80))
+       (:loffset (:list 0 0 0 0 0 0))
+       (:ldur (:list 1000 1000 1000 1000 1000 1000))
+       (:lchan (:list 1 1 1 1 1 1))
+       (:lport (:list nil nil nil nil nil nil))))))
+   (:id 43))
+  (:comment
+   (:x 1563)
+   (:y 490)
+   (:w 197)
+   (:h 22)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text "Section 11")
+   (:id 44))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name nil)
+   (:x 1426)
+   (:y 720)
+   (:w 126)
+   (:h 170)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:reactive nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 80))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :gf))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:group-ids nil)
+       (:onset 0)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic (:list 4600 5800 7000))
+       (:lvel (:list 80 80 80))
+       (:loffset (:list 0 0 0))
+       (:ldur (:list 1000 1000 1000))
+       (:lchan (:list 1 1 1))
+       (:lport (:list nil nil nil))))))
+   (:id 45))
+  (:box
+   (:type :value)
+   (:reference cons)
+   (:group-id nil)
+   (:name "value box")
+   (:x 1405)
+   (:y 678)
+   (:w 116)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:reactive nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value (:list 4600 5800 7000))
+   (:id 46))
+  (:comment
+   (:x 1567)
+   (:y 763)
+   (:w 197)
+   (:h 36)
+   (:fgcolor nil)
+   (:bgcolor nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:text
+    "Section 12
+")
+   (:id 47)))
+ (:connections
+  (:connection (:from (:box 0 :out 0)) (:to (:box 3 :in 0)))
+  (:connection (:from (:box 1 :out 0)) (:to (:box 0 :in 0)))
+  (:connection (:from (:box 2 :out 0)) (:to (:box 7 :in 1)))
+  (:connection (:from (:box 3 :out 0)) (:to (:box 5 :in 0)))
+  (:connection (:from (:box 4 :out 0)) (:to (:box 2 :in 1)))
+  (:connection (:from (:box 5 :out 0)) (:to (:box 2 :in 0)))
+  (:connection (:from (:box 6 :out 0)) (:to (:box 5 :in 1)))
+  (:connection (:from (:box 8 :out 0)) (:to (:box 10 :in 0)))
+  (:connection (:from (:box 9 :out 0)) (:to (:box 8 :in 0)))
+  (:connection (:from (:box 10 :out 0)) (:to (:box 11 :in 0)))
+  (:connection (:from (:box 11 :out 1)) (:to (:box 12 :in 0)))
+  (:connection (:from (:box 12 :out 0)) (:to (:box 13 :in 0)))
+  (:connection (:from (:box 13 :out 0)) (:to (:box 21 :in 0)))
+  (:connection (:from (:box 14 :out 0)) (:to (:box 13 :in 1)))
+  (:connection (:from (:box 16 :out 0)) (:to (:box 15 :in 1)))
+  (:connection (:from (:box 21 :out 0)) (:to (:box 27 :in 1)))
+  (:connection (:from (:box 22 :out 0)) (:to (:box 21 :in 1)))
+  (:connection (:from (:box 23 :out 0)) (:to (:box 21 :in 2)))
+  (:connection (:from (:box 25 :out 0)) (:to (:box 24 :in 1)))
+  (:connection (:from (:box 31 :out 0)) (:to (:box 30 :in 1)))
+  (:connection (:from (:box 36 :out 0)) (:to (:box 35 :in 1)))
+  (:connection (:from (:box 41 :out 0)) (:to (:box 40 :in 1)))
+  (:connection (:from (:box 46 :out 0)) (:to (:box 45 :in 1)))))53 62.96 73.14 59.49 57.98 67.31;
+46 58 70;
+58 66.64 70.99 60.38 64.68 66.33 44.12;
+46 58 70;
+58 66.64 70.99 60.38 64.68 66.33 44.12 46.99 47.46 49.45 51.42 51.61 53.52 54.64 55.25 56.81;
+46 53 58 60 70;
+58 66.64 70.99 60.38 64.68 66.33 44.12 46.99 47.46 49.45 51.42 51.61 53.52 54.64 55.25 56.81;
+46 58 70;
+58 66.64 70.99 60.38 64.68 66.33 44.12;
+46 58 70;
+53 62.96 73.14 59.49 57.98 67.31;
+46 58 70;
+53 62.96 73.14 59.49 57.98 67.31;
+Mesmo que nossa voz não soe;
+Que nosso instrumento não toque;
+A arte vai sobreviver;
+Mesmo que nosso tronco não incline;
+Que nossa perna não salte;
+A arte vai sobreviver;
+Mesmo que nossa tinta evanesça;
+Que nosso papel amoleça;
+A arte vai sobreviver;
+Mesmo que nossa lente embaçe;
+Que nossa câmera trave;
+A arte vai sobreviver;
+Mesmo que nosso tambor rasgue;
+Que nossa baqueta rache;
+A arte vai sobreviver;
+Mesmo que não haja;
+Um palco, um figurino;
+Uma ribalta, um camarim;
+Um cenário, uma cortina;
+A arte vai sobreviver;
+Porque quando não houver mais arte;
+Nada mais há de haver;
 Mes mo que nos sa voz não soe;
 Que nos so ins tru men to não to que;
 A ar te vai so bre vi ver;
@@ -1096,85 +3022,66 @@ Na da mais há de ha ver;
 #X connect 20 1 21 0;
 #X connect 21 0 6 1;
 #X connect 21 1 7 0;
-#N canvas 6 28 971 1012 10;
-#N canvas 663 28 624 1012 peca-clock 0;
+#N canvas 6 554 951 486 10;
+#N canvas 6 554 951 486 peca-clock 0;
 #X obj 8 70 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
-#X obj 8 179 del 30 1 sec;
-#X obj 89 225 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
-#X msg 89 179 0 \, 100 30000;
-#X obj 89 346 s duration-bar;
-#X obj 89 203 line 1 1 msec;
+#X obj 8 221 del 30 1 sec;
+#X obj 89 285 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X msg 89 221 0 \, 100 30000;
+#X obj 89 461 s duration-bar;
+#X obj 89 263 line 1 1 msec;
 #X obj 8 89 sel 1 0, f 52;
-#X msg 163 109 stop;
-#X msg 216 143 0;
+#X msg 163 122 stop;
+#X msg 170 167 0;
 #X obj 8 4 r on-off;
-#X obj 8 111 t b b b, f 14;
-#X obj 190 346 s poem-phrase;
-#X msg 190 179 list Silêncio.;
-#X obj 139 254 int;
-#X msg 247 309 list Respire!;
-#X obj 247 288 sel 90;
-#X obj 8 201 outlet;
+#X obj 190 461 s poem-phrase;
+#X msg 190 221 list Silêncio.;
+#X obj 139 314 int;
+#X msg 139 410 list Respire!;
+#X obj 139 334 sel 90;
+#X obj 8 243 outlet;
+#X obj 336 249 line 1 1 msec;
+#X msg 336 225 0 \, 300000 300000;
+#X obj 8 153 t b b b b, f 14;
+#X obj 336 292 outlet;
+#X obj 361 14 r on-off;
+#X obj 361 91 s stop-bar;
+#X obj 361 37 sel 0;
+#X msg 361 60 stop;
+#X obj 231 410 s respire;
 #X connect 0 0 6 0;
-#X connect 1 0 16 0;
+#X connect 1 0 15 0;
 #X connect 2 0 4 0;
-#X connect 2 0 13 0;
+#X connect 2 0 12 0;
 #X connect 3 0 5 0;
 #X connect 5 0 2 0;
-#X connect 6 0 10 0;
+#X connect 6 0 18 0;
 #X connect 6 1 7 0;
 #X connect 7 0 1 0;
 #X connect 7 0 5 0;
 #X connect 7 0 8 0;
+#X connect 7 0 16 0;
 #X connect 8 0 2 0;
 #X connect 9 0 0 0;
-#X connect 10 0 1 0;
-#X connect 10 1 3 0;
-#X connect 10 2 12 0;
-#X connect 12 0 11 0;
-#X connect 13 0 15 0;
-#X connect 14 0 11 0;
-#X connect 15 0 14 0;
+#X connect 11 0 10 0;
+#X connect 12 0 14 0;
+#X connect 13 0 10 0;
+#X connect 14 0 13 0;
+#X connect 14 0 24 0;
+#X connect 16 0 19 0;
+#X connect 17 0 16 0;
+#X connect 18 0 1 0;
+#X connect 18 1 3 0;
+#X connect 18 2 11 0;
+#X connect 18 3 17 0;
+#X connect 20 0 22 0;
+#X connect 22 0 23 0;
+#X connect 23 0 21 0;
 #X restore 6 82 pd peca-clock;
-#N canvas 983 28 931 486 main 1;
-#X obj 62 78 osc~ 440;
-#X obj 62 343 vu~;
-#X obj 62 375 s vu-r;
-#X obj 272 217 line~;
-#X obj 62 272 *~, f 15;
-#X msg 272 131 0 \, 1 300;
-#X obj 173 99 t f b, f 17;
-#X obj 173 121 - 300;
-#X obj 173 143 t b f, f 14;
-#X obj 173 165 del 300 1 msec;
-#X msg 173 191 1 \, 0 300;
-#X obj 62 5 inlet;
-#X obj 173 79 f;
-#X obj 62 27 t f b;
-#X obj 118 343 dac~ 1;
-#X obj 188 21 r total-duration;
-#X connect 0 0 4 0;
-#X connect 1 0 2 0;
-#X connect 3 0 4 1;
-#X connect 4 0 1 0;
-#X connect 4 0 14 0;
-#X connect 5 0 3 0;
-#X connect 6 0 7 0;
-#X connect 6 1 5 0;
-#X connect 7 0 8 0;
-#X connect 8 0 9 0;
-#X connect 8 1 9 1;
-#X connect 9 0 10 0;
-#X connect 10 0 3 0;
-#X connect 11 0 13 0;
-#X connect 12 0 6 0;
-#X connect 13 0 0 0;
-#X connect 13 1 12 0;
-#X connect 15 0 12 1;
-#X restore 396 68 pd main;
-#N canvas 663 28 624 1012 poema 0;
+#X f 22;
+#N canvas 6 28 951 486 poema 1;
 #X obj 176 93 text define poema;
-#X obj 8 124 text get poema;
+#X obj 8 161 text get poema;
 #X obj 89 184 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
 #X obj 89 205 sel 0;
 #X msg 89 227 1;
@@ -1182,7 +3089,6 @@ Na da mais há de ha ver;
 #X obj 8 248 spigot;
 #X msg 176 34 write poema.txt;
 #X obj 278 34 loadbang;
-#X obj 115 14 bng 18 250 50 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000;
 #X obj 8 365 list split;
 #X obj 65 321 list length;
 #X obj 65 343 expr random(-1 \, $f1);
@@ -1190,15 +3096,22 @@ Na da mais há de ha ver;
 #X obj 36 438 list split, f 12;
 #X msg 78 416 1;
 #X obj 36 460 outlet;
-#X obj 8 270 t a a a, f 39;
 #X msg 278 56 read poema.txt;
-#X obj 239 306 spigot;
-#X obj 272 207 r on-off;
-#X obj 239 386 s poem-phrase;
-#X obj 302 240 loadbang;
-#X msg 302 262 1;
+#X obj 239 367 spigot, f 15;
+#X obj 326 266 r on-off;
+#X obj 239 452 s poem-phrase;
+#X obj 338 292 loadbang;
+#X msg 338 314 1;
 #X obj 175 8 declare -path ./Extras;
 #X obj 8 20 inlet;
+#X obj 399 9 loadbang;
+#X obj 400 55 text define poema-phrase;
+#X msg 399 31 read poema-phrases.txt;
+#X obj 8 270 t a a b, f 39;
+#X obj 239 327 f;
+#X obj 254 181 f;
+#X obj 8 57 t f f;
+#X obj 239 403 text get poema-phrase;
 #X connect 1 0 6 0;
 #X connect 1 1 2 0;
 #X connect 2 0 3 0;
@@ -1206,78 +3119,140 @@ Na da mais há de ha ver;
 #X connect 3 1 5 0;
 #X connect 4 0 6 1;
 #X connect 5 0 6 1;
-#X connect 6 0 17 0;
+#X connect 6 0 27 0;
 #X connect 7 0 0 0;
-#X connect 8 0 18 0;
-#X connect 10 1 14 0;
-#X connect 11 0 12 0;
-#X connect 12 0 10 1;
-#X connect 13 0 15 0;
-#X connect 14 0 16 0;
-#X connect 15 0 14 1;
-#X connect 17 0 10 0;
-#X connect 17 1 11 0;
-#X connect 17 2 19 0;
-#X connect 18 0 0 0;
-#X connect 19 0 21 0;
-#X connect 20 0 19 1;
-#X connect 22 0 23 0;
-#X connect 23 0 19 1;
-#X connect 25 0 1 0;
-#X restore 278 126 pd poema;
-#N canvas 1293 28 621 1012 notes 0;
-#X obj 7 4 inlet;
-#X obj 7 320 outlet;
-#X obj 79 5 r voz;
-#X obj 79 27 sel 1 2 3 4, f 42;
-#X text 327 9 1 \, baixo 2 \, tenor 3 \, contralto 4 \, soprano;
-#X msg 79 70 45 57;
-#X msg 141 70 50 62;
-#X msg 203 70 57 69;
-#X msg 266 69 62 74;
-#X obj 80 113 unpack f f;
-#X obj 7 141 expr random($f2 * 100 \, $f3 * 100) * 0.01;
-#X obj 7 227 midi2note;
-#X obj 24 27 loadbang;
-#X obj 101 227 s midi-pitch;
-#X connect 0 0 10 0;
-#X connect 2 0 3 0;
-#X connect 3 0 5 0;
-#X connect 3 1 6 0;
-#X connect 3 2 7 0;
-#X connect 3 3 8 0;
-#X connect 5 0 9 0;
-#X connect 6 0 9 0;
-#X connect 7 0 9 0;
-#X connect 8 0 9 0;
-#X connect 9 0 10 1;
-#X connect 9 1 10 2;
+#X connect 8 0 16 0;
+#X connect 9 1 13 0;
 #X connect 10 0 11 0;
-#X connect 10 0 13 0;
-#X connect 11 0 1 0;
-#X connect 12 0 8 0;
-#X restore 383 128 pd notes;
-#X obj 278 186 list, f 18;
-#X obj 278 252 s mylist;
-#X obj 396 4 r midi-pitch;
-#X obj 396 26 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
-#X obj 396 47 mtof;
+#X connect 11 0 9 1;
+#X connect 12 0 14 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 1;
+#X connect 16 0 0 0;
+#X connect 17 0 31 0;
+#X connect 18 0 17 1;
+#X connect 20 0 21 0;
+#X connect 21 0 17 1;
+#X connect 23 0 30 0;
+#X connect 24 0 26 0;
+#X connect 26 0 25 0;
+#X connect 27 0 9 0;
+#X connect 27 1 10 0;
+#X connect 27 2 28 0;
+#X connect 28 0 17 0;
+#X connect 29 0 28 1;
+#X connect 30 0 1 0;
+#X connect 30 1 29 0;
+#X connect 31 0 19 0;
+#X restore 278 202 pd poema;
+#N canvas 6 28 951 486 notes 0;
+#X obj 7 4 inlet;
+#X obj 36 534 outlet;
+#X obj 262 207 sel 1 2 3 4, f 42;
+#X text 327 9 1 \, baixo 2 \, tenor 3 \, contralto 4 \, soprano;
+#X msg 324 250 50 62;
+#X msg 386 250 57 69;
+#X msg 448 251 62 74;
+#X obj 262 293 unpack f f, f 19;
+#X obj 36 504 midi2note;
+#X obj 520 207 loadbang;
+#X obj 115 479 s midi-pitch;
+#X obj 45 67 text define chords;
+#X msg 45 4 write Extras/chords.txt;
+#X msg 62 47 read chords.txt;
+#X obj 62 25 loadbang;
+#X msg 262 250 44 57;
+#X obj 7 165 text get chords;
+#X obj 58 89 r section;
+#X obj 7 142 int 0, f 9;
+#X obj 7 102 bng 18 250 50 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000;
+#X obj 58 209 list length;
+#X obj 7 187 t a a, f 9;
+#X obj 58 253 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 7 276 list split;
+#X obj 36 307 unpack f;
+#X obj 58 231 expr random(0 \, $f1);
+#X obj 115 458 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 36 329 t f f, f 20;
+#X obj 153 351 expr if($f1 > $f2 && $f1 < $f3 \, 1 \, 0);
+#X obj 207 424 sel 0;
+#X obj 207 501 s sort-again;
+#X obj 126 100 r sort-again;
+#X obj 207 471 del 0 1 msec;
+#X obj 60 457 loadbang;
+#X msg 60 479 sharp;
+#X obj 58 111 - 1;
+#X msg 209 101 0;
+#X obj 209 69 r on-off;
+#X obj 36 410 spigot;
+#X obj 153 374 t f f;
+#X obj 262 136 r naipe;
+#X connect 0 0 19 0;
+#X connect 2 0 15 0;
+#X connect 2 1 4 0;
+#X connect 2 2 5 0;
+#X connect 2 3 6 0;
+#X connect 4 0 7 0;
+#X connect 5 0 7 0;
+#X connect 6 0 7 0;
+#X connect 7 0 28 1;
+#X connect 7 1 28 2;
+#X connect 8 0 1 0;
+#X connect 9 0 6 0;
+#X connect 12 0 11 0;
+#X connect 13 0 11 0;
+#X connect 14 0 13 0;
+#X connect 15 0 7 0;
+#X connect 16 0 21 0;
+#X connect 17 0 35 0;
+#X connect 18 0 16 0;
+#X connect 19 0 18 0;
+#X connect 20 0 25 0;
+#X connect 21 0 23 0;
+#X connect 21 1 20 0;
+#X connect 22 0 23 1;
+#X connect 23 1 24 0;
+#X connect 24 0 27 0;
+#X connect 25 0 22 0;
+#X connect 26 0 10 0;
+#X connect 27 0 38 0;
+#X connect 27 1 28 0;
+#X connect 28 0 39 0;
+#X connect 29 0 32 0;
+#X connect 31 0 18 0;
+#X connect 32 0 30 0;
+#X connect 33 0 34 0;
+#X connect 34 0 8 0;
+#X connect 35 0 18 1;
+#X connect 36 0 18 1;
+#X connect 37 0 36 0;
+#X connect 38 0 8 0;
+#X connect 38 0 26 0;
+#X connect 39 0 38 1;
+#X connect 39 1 29 0;
+#X connect 40 0 2 0;
+#X restore 305 107 pd notes;
+#X obj 278 232 list, f 18;
+#X obj 278 329 s mylist;
+#X obj 218 398 r midi-pitch;
+#X obj 218 420 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 218 441 mtof;
 #X obj 6 6 tgl 45 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 6 58 s on-off;
 #X obj 6 104 bng 18 250 50 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000;
-#X obj 6 327 array get duration-array;
+#X obj 6 354 array get duration-array;
 #X msg 6 127 -1;
 #X obj 6 172 + 1, f 6;
 #X obj 6 151 int, f 6;
-#X obj 6 295 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
-#X obj 6 373 del 1 1 msec;
-#X obj 6 395 s next;
+#X obj 6 281 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 6 444 del 1 1 msec;
+#X obj 6 466 s next;
 #X obj 36 127 r next;
-#X obj 158 327 s phr-count;
+#X obj 12 310 s phr-count;
 #X obj 278 19 r phr-count;
-#X obj 6 268 spigot, f 8;
-#X obj 6 194 t f f, f 8;
-#N canvas 663 28 624 1012 split-dur 0;
+#X obj 6 254 spigot, f 8;
+#X obj 6 204 t f f, f 8;
+#N canvas 6 28 951 486 split-dur 0;
 #X obj 4 3 inlet;
 #X obj 53 223 router 2, f 14;
 #X obj 53 74 array get duration-array;
@@ -1287,7 +3262,7 @@ Na da mais há de ha ver;
 #X obj 4 379 outlet;
 #X obj 53 96 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
 #X obj 53 123 t f f b, f 28;
-#N canvas 663 554 624 486 duration-bar 0;
+#N canvas 963 554 951 486 duration-bar 0;
 #X msg 12 54 0 \, 100 \$1;
 #X obj 12 79 line;
 #X obj 69 189 s poem-phrase;
@@ -1299,11 +3274,13 @@ Na da mais há de ha ver;
 #X obj 12 7 inlet;
 #X obj 78 54 r stop-bar;
 #X obj 147 54 s total-duration;
+#X obj 168 191 s respire;
 #X connect 0 0 1 0;
 #X connect 1 0 6 0;
 #X connect 3 0 5 0;
 #X connect 4 0 2 0;
 #X connect 5 0 4 0;
+#X connect 5 0 11 0;
 #X connect 6 0 7 0;
 #X connect 6 1 3 0;
 #X connect 8 0 0 0;
@@ -1311,7 +3288,7 @@ Na da mais há de ha ver;
 #X connect 9 0 1 0;
 #X restore 160 270 pd duration-bar;
 #X obj 218 169 s stop-bar;
-#N canvas 663 554 624 486 duration-bar 0;
+#N canvas 1443 28 471 486 duration-bar 0;
 #X msg 13 116 0 \, 100 \$1;
 #X obj 13 143 line;
 #X obj 70 275 s poem-phrase;
@@ -1327,12 +3304,14 @@ Na da mais há de ha ver;
 #X obj 126 168 sel 100;
 #X obj 126 190 outlet;
 #X obj 146 116 s total-duration;
+#X obj 155 275 s respire;
 #X connect 0 0 1 0;
 #X connect 1 0 6 0;
 #X connect 1 0 12 0;
 #X connect 3 0 5 0;
 #X connect 4 0 2 0;
 #X connect 5 0 4 0;
+#X connect 5 0 15 0;
 #X connect 6 0 7 0;
 #X connect 6 1 3 0;
 #X connect 8 0 10 0;
@@ -1366,7 +3345,7 @@ Na da mais há de ha ver;
 #X connect 13 2 5 1;
 #X connect 14 0 1 1;
 #X restore 278 42 pd split-dur;
-#X obj 6 349 t b f, f 24;
+#X obj 6 376 t b f, f 24;
 #X obj 56 25 hsl 153 18 0 100 0 0 empty duration-bar empty -2 -9 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 52 43 Duration bar;
 #N canvas 6 28 951 486 config 0;
@@ -1375,42 +3354,169 @@ Na da mais há de ha ver;
 #X obj 6 4 array define -yrange 0 25000 duration-array 22;
 #X msg 106 52 22000 19528 12698 15787 15698 16245 8098 7984 5800 15924 5167 17537 16824 20852 8488 15685 5539 20267 12004 19579 9950 8346;
 #X obj 106 26 loadbang;
+#X obj 278 145 loadbang;
+#X obj 169 145 r sectiondur-list;
+#X obj 169 264 array set section-dur;
+#X obj 294 4 array define -yrange 0 50000 section-dur 14;
+#X msg 278 171 30000 34151 12900 34887 13906 27862 7649 32424 6389 29931 13193 20745 5963 30000;
+#X obj 418 264 loadbang;
+#X obj 309 264 r sectiondur-list;
+#X obj 309 383 array set section-dur;
+#X msg 418 290 30000 34151 12900 34887 13906 27862 7649 32424 6389 29931 13193 20745 5963 30000;
 #X connect 0 0 1 0;
 #X connect 3 0 1 0;
 #X connect 4 0 3 0;
+#X connect 5 0 9 0;
+#X connect 6 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 13 0;
+#X connect 11 0 12 0;
+#X connect 13 0 12 0;
 #X restore 53 6 pd config;
 #X obj 278 65 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
-#X obj 51 215 expr if($f1 > 22 \, 0 \, 1);
+#X obj 51 227 expr if($f1 > 22 \, 0 \, 1);
 #X obj 278 86 t f f;
-#X listbox 291 211 9 0 0 0 - - - 24;
-#X connect 0 0 11 0;
-#X connect 2 0 4 0;
-#X connect 3 0 4 1;
+#X listbox 291 288 9 0 0 0 - - - 24;
+#X obj 135 105 nbx 9 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#N canvas 6 28 951 486 sections 0;
+#X obj 5 6 inlet;
+#X obj 76 8 r on-off;
+#X obj 76 30 sel 1;
+#X msg 76 52 0;
+#X obj 76 130 int;
+#X obj 76 185 t f f, f 11;
+#X obj 139 207 + 1;
+#X obj 5 433 sel 1;
+#X obj 164 185 loadbang;
+#X msg 164 207 1;
+#X obj 5 388 expr if($f1 > $f2 \, 1 \, 0);
+#X obj 76 243 array get section-dur;
+#X obj 119 76 r section-count;
+#X obj 5 455 s section-count;
+#X obj 15 244 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 76 310 f;
+#X obj 76 332 nbx 9 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 15 265 s section;
+#X obj 171 389 sel 300000;
+#X msg 171 411 0;
+#X obj 171 433 s on-off;
+#X msg 221 244 0;
+#X obj 221 184 r on-off;
+#X obj 76 288 + 1;
+#X obj 221 206 sel 0;
+#X connect 0 0 10 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
 #X connect 4 0 5 0;
-#X connect 4 0 32 0;
+#X connect 4 0 14 0;
+#X connect 5 0 11 0;
+#X connect 5 1 6 0;
+#X connect 6 0 4 1;
+#X connect 7 0 13 0;
+#X connect 8 0 9 0;
+#X connect 9 0 11 1;
+#X connect 10 0 7 0;
+#X connect 11 0 23 0;
+#X connect 12 0 4 0;
+#X connect 14 0 17 0;
+#X connect 15 0 16 0;
+#X connect 15 0 23 1;
+#X connect 16 0 10 1;
+#X connect 16 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 23 1;
+#X connect 21 0 23 0;
+#X connect 22 0 24 0;
+#X connect 23 0 15 0;
+#X connect 24 0 21 0;
+#X restore 135 128 pd sections;
+#X obj 84 310 loadbang;
+#X msg 84 332 1;
+#N canvas 6 554 951 486 sound 0;
+#X obj 62 157 osc~ 440;
+#X obj 173 198 line~;
+#X obj 62 261 *~, f 15;
+#X msg 173 117 0 \, 1 300;
+#X obj 62 5 inlet;
+#X obj 173 97 f;
+#X obj 62 27 t f b;
+#X obj 62 282 dac~ 1;
+#X obj 206 9 r total-duration;
+#X obj 206 31 t b f, f 18;
+#X obj 173 76 spigot;
+#X obj 127 13 loadbang;
+#X msg 127 35 0;
+#X msg 206 51 1;
+#X obj 290 81 r respire;
+#X msg 290 119 1 \, 0 300;
+#X obj 290 149 spigot;
+#X obj 361 109 bng 18 250 50 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000;
+#X connect 0 0 2 0;
+#X connect 1 0 2 1;
+#X connect 2 0 7 0;
+#X connect 3 0 1 0;
+#X connect 4 0 6 0;
+#X connect 5 0 3 0;
+#X connect 6 0 0 0;
+#X connect 6 1 10 0;
+#X connect 8 0 9 0;
+#X connect 9 0 13 0;
+#X connect 9 1 5 1;
+#X connect 10 0 5 0;
+#X connect 11 0 12 0;
+#X connect 12 0 10 1;
+#X connect 12 0 16 1;
+#X connect 13 0 10 1;
+#X connect 13 0 16 1;
+#X connect 14 0 15 0;
+#X connect 14 0 17 0;
+#X connect 15 0 16 0;
+#X connect 16 0 1 0;
+#X restore 218 462 pd sound;
+#X obj 32 404 r stop-bar;
+#X obj 91 156 r section;
+#X obj 91 178 nbx 5 16 -1e+37 1e+37 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 278 172 f;
+#X obj 305 129 t b s;
+#X connect 0 0 10 0;
+#X connect 0 1 32 0;
+#X connect 1 0 3 0;
+#X connect 2 0 41 0;
+#X connect 3 0 4 0;
+#X connect 3 0 31 0;
+#X connect 5 0 6 0;
 #X connect 6 0 7 0;
-#X connect 7 0 8 0;
-#X connect 8 0 1 0;
-#X connect 9 0 10 0;
-#X connect 11 0 13 0;
-#X connect 12 0 25 0;
-#X connect 13 0 15 0;
-#X connect 14 0 15 1;
-#X connect 14 0 23 0;
-#X connect 15 0 14 0;
-#X connect 16 0 12 0;
-#X connect 16 0 20 0;
-#X connect 17 0 18 0;
-#X connect 19 0 15 0;
-#X connect 21 0 24 0;
-#X connect 22 0 16 0;
-#X connect 23 0 22 0;
-#X connect 23 1 30 0;
-#X connect 24 0 29 0;
-#X connect 25 0 17 0;
-#X connect 25 1 17 1;
-#X connect 29 0 31 0;
-#X connect 30 0 22 1;
-#X connect 31 0 2 0;
-#X connect 31 1 3 0;
+#X connect 7 0 36 0;
+#X connect 8 0 9 0;
+#X connect 10 0 12 0;
+#X connect 11 0 24 0;
+#X connect 12 0 14 0;
+#X connect 13 0 14 1;
+#X connect 13 0 22 0;
+#X connect 14 0 13 0;
+#X connect 15 0 11 0;
+#X connect 15 0 19 0;
+#X connect 16 0 17 0;
+#X connect 18 0 14 0;
+#X connect 20 0 23 0;
+#X connect 21 0 15 0;
+#X connect 22 0 21 0;
+#X connect 22 1 29 0;
+#X connect 23 0 28 0;
+#X connect 24 0 16 0;
+#X connect 24 1 16 1;
+#X connect 28 0 30 0;
+#X connect 29 0 21 1;
+#X connect 30 0 40 1;
+#X connect 30 1 2 0;
+#X connect 32 0 33 0;
+#X connect 34 0 35 0;
+#X connect 35 0 11 1;
+#X connect 37 0 16 0;
+#X connect 38 0 39 0;
+#X connect 40 0 1 0;
+#X connect 41 0 40 0;
+#X connect 41 1 3 1;
 #X coords 0 0 1 1 200 140 0;

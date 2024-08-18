@@ -1606,7 +1606,7 @@ function OpenPatch(content) {
 async function Pd4WebInitGui(autoTheme) {
     if (Pd4Web === undefined) {
         setTimeout(Pd4WebInitGui, 150);
-        console.log("Pd4Web is not defined yet");
+        console.log("Pd4Web is not defined yet, wait...");
         return;
     }
 
