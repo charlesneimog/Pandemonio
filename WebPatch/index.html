@@ -262,6 +262,16 @@
         style="font-size: 30px; color: white; text-align: center"
       ></h1>
     </div>
+    <div
+      id="piece-duration-bar"
+      style="
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 10px;
+        height: 5px;
+        background-color: white;
+      "
+    ></div>
     <script>
       function chooseNaipe() {
         const naipe = document.getElementById("naipe-select").value;
@@ -381,6 +391,12 @@
           const durationBar = document.getElementById("duration-bar");
           durationBar.style.width = number + "%";
         });
+
+        Pd4Web.onFloatReceived("piece-duration-bar", function (number) {
+          const durationBar = document.getElementById("piece-duration-bar");
+          durationBar.style.width = number + "%";
+        });
+
         console.log("Pd4Web initiated");
       }
 

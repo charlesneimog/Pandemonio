@@ -86,7 +86,7 @@ var ENVIRONMENT_IS_WASM_WORKER = Module['$ww'];
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmpel0azy7e.js
+// include: /tmp/tmp_1eso5hn.js
 
   if (!Module.expectedDataFileDownloads) {
     Module.expectedDataFileDownloads = 0;
@@ -264,25 +264,25 @@ Module['FS_createPath']("/", "Libs", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/Extras/Pitches.opat", "start": 0, "end": 40329}, {"filename": "/Extras/chords.txt", "start": 40329, "end": 40765}, {"filename": "/Extras/poema-phrases.txt", "start": 40765, "end": 41359}, {"filename": "/Extras/poema.txt", "start": 41359, "end": 42039}, {"filename": "/Libs/Engine.pd", "start": 42039, "end": 46713}, {"filename": "/Libs/count.pd", "start": 46713, "end": 55172}, {"filename": "/Libs/group.pd", "start": 55172, "end": 57431}, {"filename": "/Libs/insert.pd", "start": 57431, "end": 58881}, {"filename": "/Libs/iterate.pd", "start": 58881, "end": 60900}, {"filename": "/Libs/midi2note.pd", "start": 60900, "end": 66947}, {"filename": "/Libs/rotate.pd", "start": 66947, "end": 68228}, {"filename": "/index.pd", "start": 68228, "end": 81622}], "remote_package_size": 81622});
+    loadPackage({"files": [{"filename": "/Extras/Pitches.opat", "start": 0, "end": 40329}, {"filename": "/Extras/chords.txt", "start": 40329, "end": 40765}, {"filename": "/Extras/poema-phrases.txt", "start": 40765, "end": 41359}, {"filename": "/Extras/poema.txt", "start": 41359, "end": 42039}, {"filename": "/Libs/Engine.pd", "start": 42039, "end": 46713}, {"filename": "/Libs/count.pd", "start": 46713, "end": 55172}, {"filename": "/Libs/group.pd", "start": 55172, "end": 57431}, {"filename": "/Libs/insert.pd", "start": 57431, "end": 58881}, {"filename": "/Libs/iterate.pd", "start": 58881, "end": 60900}, {"filename": "/Libs/midi2note.pd", "start": 60900, "end": 66947}, {"filename": "/Libs/rotate.pd", "start": 66947, "end": 68228}, {"filename": "/index.pd", "start": 68228, "end": 81915}], "remote_package_size": 81915});
 
   })();
 
-// end include: /tmp/tmpel0azy7e.js
-// include: /tmp/tmp8qcw59qk.js
+// end include: /tmp/tmp_1eso5hn.js
+// include: /tmp/tmp1qcwmcd_.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if (Module['$ww'] || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: /tmp/tmp8qcw59qk.js
-// include: /tmp/tmpfr9dbqyj.js
+  // end include: /tmp/tmp1qcwmcd_.js
+// include: /tmp/tmpa07pr1vj.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: /tmp/tmpfr9dbqyj.js
+  // end include: /tmp/tmpa07pr1vj.js
 
 
 // Sometimes an existing Module object exists with properties
