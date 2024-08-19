@@ -147,6 +147,7 @@
         style="
           margin-top: 20px;
           width: 100%;
+          border-radius: 5px;
 
           height: 20px;
           background-color: white;
@@ -186,19 +187,26 @@
         stave.setEndBarType(VF.Barline.type.END);
         stave.addClef(CLEF).setContext(context).draw();
 
-        // remove CLEF from the stave
-
-        function setNoteAndSilaba(pitch, silaba) {
+        function setNaipe() {
           const naipe = document.getElementById("naipe-select").value;
           if (naipe == "Baixo") {
             Pd4Web.sendFloat("naipe", 1);
+            CLEF = "bass";
           } else if (naipe == "Tenor") {
             Pd4Web.sendFloat("naipe", 2);
+            CLEF = "bass";
           } else if (naipe == "Contralto") {
             Pd4Web.sendFloat("naipe", 3);
+            CLEF = "treble";
           } else if (naipe == "Soprano") {
             Pd4Web.sendFloat("naipe", 4);
+            CLEF = "treble";
           }
+        }
+        // remove CLEF from the stave
+
+        function setNoteAndSilaba(pitch, silaba) {
+          setNaipe();
           const pitchname = pitch[0];
           let remainingPitch = pitch.slice(1);
           const pitchoctave = remainingPitch[remainingPitch.length - 1];
@@ -294,19 +302,8 @@
           );
           return;
         }
-        if (naipe == "Baixo") {
-          Pd4Web.sendFloat("naipe", 1);
-          CLEF = "bass";
-        } else if (naipe == "Tenor") {
-          Pd4Web.sendFloat("naipe", 2);
-          CLEF = "bass";
-        } else if (naipe == "Contralto") {
-          Pd4Web.sendFloat("naipe", 3);
-          CLEF = "treble";
-        } else if (naipe == "Soprano") {
-          Pd4Web.sendFloat("naipe", 4);
-          CLEF = "treble";
-        }
+        setNaipe();
+        
         const clefs = document.querySelectorAll(".vf-clef");
         clefs.forEach((clef) => {
           clef.remove();
@@ -421,6 +418,7 @@
         Pd4WebOnClick().then(() => {
           if (checkbox.checked) {
             setTimeout(() => {
+              setNaipe();
               Pd4Web.sendFloat("on-off", 1);
             }, 100);
           } else {
