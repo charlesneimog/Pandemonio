@@ -189,6 +189,16 @@
         // remove CLEF from the stave
 
         function setNoteAndSilaba(pitch, silaba) {
+          const naipe = document.getElementById("naipe-select").value;
+          if (naipe == "Baixo") {
+            Pd4Web.sendFloat("naipe", 1);
+          } else if (naipe == "Tenor") {
+            Pd4Web.sendFloat("naipe", 2);
+          } else if (naipe == "Contralto") {
+            Pd4Web.sendFloat("naipe", 3);
+          } else if (naipe == "Soprano") {
+            Pd4Web.sendFloat("naipe", 4);
+          }
           const pitchname = pitch[0];
           let remainingPitch = pitch.slice(1);
           const pitchoctave = remainingPitch[remainingPitch.length - 1];

@@ -7,6 +7,7 @@ extern "C" void selector_setup();
 extern "C" void format_setup();
 extern "C" void spread_setup();
 extern "C" void quantizer_setup();
+extern "C" void vu_tilde_setup();
 
 void Pd4WebInitExternals() {
     router_setup();
@@ -16,5 +17,6 @@ void Pd4WebInitExternals() {
     format_setup();
     spread_setup();
     quantizer_setup();
+    vu_tilde_setup();
     return;
 };
