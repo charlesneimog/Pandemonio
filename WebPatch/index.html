@@ -277,9 +277,12 @@
     <div id="Phrase" style="height: 50%; margin-left: 0%; margin-top: 0%">
       <h1
         id="phrase"
-        style="font-size: 30px; color: white; text-align: center"
+        style="font-size: 30px; color: white; text-align: center; height: 30px"
       ></h1>
     </div>
+    <hr
+      style="width: 90%; margin-top: 20px; background-color: rgb(226, 225, 225)"
+    />
     <div
       id="piece-duration-bar"
       style="
@@ -291,6 +294,8 @@
       "
     ></div>
     <script>
+      document.getElementById("phrase").innerText = "Escolha seu Naipe!";
+
       function chooseNaipe() {
         const naipe = document.getElementById("naipe-select").value;
         if (naipe === "none") {
@@ -303,7 +308,7 @@
           return;
         }
         setNaipe();
-        
+
         const clefs = document.querySelectorAll(".vf-clef");
         clefs.forEach((clef) => {
           clef.remove();
@@ -340,11 +345,12 @@
         return numbers;
       }
 
-      const values = generateNumbersWithSum(300000, 22, 8000, 20000);
-      const sum = values.reduce((acc, num) => acc + num, 0);
+      var poemDur = generateNumbersWithSum(270000, 21, 8000, 20000);
+      poemDur.unshift(30000);
+      const sum = poemDur.reduce((acc, num) => acc + num, 0);
       if (sum !== 300000) {
         alert("Error: sum is not 300000");
-      }
+      } 
 
       const msInitEnd = 30000;
       var globalDur = [];
@@ -374,8 +380,6 @@
         }
         Pd4WebInitiate = true;
         Pd4Web.init();
-        Pd4Web.sendList("duration-list", values);
-        Pd4Web.sendList("sectiondur-list", globalDur);
 
         Pd4Web.onListReceived("mylist", function (list) {
           const pitch = list[1];
@@ -387,6 +391,12 @@
           const poemPhrase = list.join(" ");
           document.getElementById("phrase").innerText = poemPhrase;
           if (poemPhrase === "Respire!") {
+            const notes = document.querySelectorAll(".vf-stavenote");
+            notes.forEach((note) => {
+              note.remove();
+            });
+          }
+          if (poemPhrase === "Fim!") {
             const notes = document.querySelectorAll(".vf-stavenote");
             notes.forEach((note) => {
               note.remove();
@@ -419,7 +429,10 @@
           if (checkbox.checked) {
             setTimeout(() => {
               setNaipe();
+              Pd4Web.sendList("duration-list", poemDur);
+              Pd4Web.sendList("sectiondur-list", globalDur);
               Pd4Web.sendFloat("on-off", 1);
+              
             }, 100);
           } else {
             Pd4Web.sendFloat("on-off", 0);
