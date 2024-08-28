@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>Pd4Web</title>
@@ -94,18 +94,24 @@
       outline: 0;
       border: 0;
       cursor: pointer;
-      transition: box-shadow 0.15s ease, transform 0.15s ease;
+      transition:
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
       will-change: box-shadow, transform;
       text-align: center;
       background: rgb(70, 70, 70);
-      box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
-        0px 4px 2px -3px rgba(108, 108, 108, 0.3), inset 0px -3px 0px #5b5b5b;
+      box-shadow:
+        0px 2px 4px rgb(45 35 66 / 40%),
+        0px 4px 2px -3px rgba(108, 108, 108, 0.3),
+        inset 0px -3px 0px #5b5b5b;
       height: 46px;
       padding: 0 30px;
       font-size: 16px;
       border-radius: 6px;
       color: #ffffff;
-      transition: box-shadow 0.15s ease, transform 0.15s ease;
+      transition:
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
     }
   </style>
 
@@ -190,15 +196,18 @@
         function setNaipe() {
           const naipe = document.getElementById("naipe-select").value;
           if (naipe == "Baixo") {
-            Pd4Web.sendFloat("naipe", 1);
+            window.naipe = 1;
             CLEF = "bass";
           } else if (naipe == "Tenor") {
             Pd4Web.sendFloat("naipe", 2);
+            window.naipe = 2;
             CLEF = "bass";
           } else if (naipe == "Contralto") {
+            window.naipe = 3;
             Pd4Web.sendFloat("naipe", 3);
             CLEF = "treble";
           } else if (naipe == "Soprano") {
+            window.naipe = 4;
             Pd4Web.sendFloat("naipe", 4);
             CLEF = "treble";
           }
@@ -206,7 +215,22 @@
         // remove CLEF from the stave
 
         function setNoteAndSilaba(pitch, silaba) {
-          setNaipe();
+          if (window.naipe == 1) {
+            CLEF = "bass";
+            Pd4Web.sendFloat("naipe", 1);
+          } else if (window.naipe == 2) {
+            CLEF = "bass";
+            Pd4Web.sendFloat("naipe", 2);
+          } else if (window.naipe == 3) {
+            CLEF = "treble";
+            Pd4Web.sendFloat("naipe", 3);
+          } else if (window.naipe == 4) {
+            Pd4Web.sendFloat("naipe", 4);
+            CLEF = "treble";
+          } else {
+            setNaipe();
+          }
+
           const pitchname = pitch[0];
           let remainingPitch = pitch.slice(1);
           const pitchoctave = remainingPitch[remainingPitch.length - 1];
@@ -246,10 +270,10 @@
           lyricsAnnotation.setFont("Serif", 12, "");
 
           lyricsAnnotation.setVerticalJustification(
-            VF.Annotation.VerticalJustify.BOTTOM
+            VF.Annotation.VerticalJustify.BOTTOM,
           );
           lyricsAnnotation.setJustification(
-            VF.Annotation.HorizontalJustify.CENTER
+            VF.Annotation.HorizontalJustify.CENTER,
           );
 
           note.addModifier(lyricsAnnotation, 0);
@@ -303,7 +327,7 @@
         }
         if (Pd4Web === null) {
           alert(
-            "Pd4Web is not loaded yet. Please wait a few seconds and try again."
+            "Pd4Web is not loaded yet. Please wait a few seconds and try again.",
           );
           return;
         }
@@ -324,7 +348,8 @@
         // Thanks to llama
         let numbers = Array.from(
           { length: numElements },
-          () => Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+          () =>
+            Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue,
         );
         let currentSum = numbers.reduce((acc, num) => acc + num, 0);
         let difference = total - currentSum;
@@ -350,7 +375,7 @@
       const sum = poemDur.reduce((acc, num) => acc + num, 0);
       if (sum !== 300000) {
         alert("Error: sum is not 300000");
-      } 
+      }
 
       const msInitEnd = 30000;
       var globalDur = [];
@@ -432,7 +457,6 @@
               Pd4Web.sendList("duration-list", poemDur);
               Pd4Web.sendList("sectiondur-list", globalDur);
               Pd4Web.sendFloat("on-off", 1);
-              
             }, 100);
           } else {
             Pd4Web.sendFloat("on-off", 0);
