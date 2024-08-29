@@ -452,12 +452,15 @@
         }
         Pd4WebOnClick().then(() => {
           if (checkbox.checked) {
+            document.getElementById("phrase").innerText = "Inicializando...";
             setTimeout(() => {
               setNaipe();
               Pd4Web.sendList("duration-list", poemDur);
               Pd4Web.sendList("sectiondur-list", globalDur);
-              Pd4Web.sendFloat("on-off", 1);
             }, 100);
+            setTimeout(() => {
+              Pd4Web.sendFloat("on-off", 1);
+            }, 500);
           } else {
             Pd4Web.sendFloat("on-off", 0);
           }
